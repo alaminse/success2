@@ -212,36 +212,35 @@
                                     _token: '{{ csrf_token() }}'
                                 },
                                 success: function(result) {
-
-                                    // Clear all input values
-                                    $('input[name="name"]').val('');
-                                    $('input[name="email"]').val('');
-                                    $('input[name="phone_no"]').val('');
-                                    $('input[name="resume_path"]').val('');
-                                    $('textarea[name="resume_text"]').val('');
                                     console.log(result);
+                                    // Clear all input values
+                                    // $('input[name="name"]').val('');
+                                    // $('input[name="email"]').val('');
+                                    // $('input[name="phone_no"]').val('');
+                                    // $('input[name="resume_path"]').val('');
+                                    // $('textarea[name="resume_text"]').val('');
 
                                     // Iterate over each field in the result object
-                                    for (const field in result) {
-                                        if (result[field].includes("not found")) {
-                                            // If the field value contains "not found", set placeholder
-                                            $(`input[name="${field}"], textarea[name="${field}"]`).attr(
-                                                'placeholder', result[field]);
-                                        } else {
-                                            // Otherwise, set the field value
-                                            $(`input[name="${field}"], textarea[name="${field}"]`).val(
-                                                result[field]);
-                                        }
-                                    }
+                                    // for (const field in result) {
+                                    //     if (result[field].includes("not found")) {
+                                    //         // If the field value contains "not found", set placeholder
+                                    //         $(`input[name="${field}"], textarea[name="${field}"]`).attr(
+                                    //             'placeholder', result[field]);
+                                    //     } else {
+                                    //         // Otherwise, set the field value
+                                    //         $(`input[name="${field}"], textarea[name="${field}"]`).val(
+                                    //             result[field]);
+                                    //     }
+                                    // }
 
                                     // Set resume path separately
-                                    $('input[name="resume_path"]').val(result.myPath);
+                                    // $('input[name="resume_path"]').val(result.myPath);
 
-                                    const iframe = document.getElementById('pdfViewer');
-                                    const pdfUrl = result.myPath;
-                                    iframe.src = pdfUrl;
-                                    iframe.width = "100%";
-                                    iframe.height = "600px";
+                                    // const iframe = document.getElementById('pdfViewer');
+                                    // const pdfUrl = result.myPath;
+                                    // iframe.src = pdfUrl;
+                                    // iframe.width = "100%";
+                                    // iframe.height = "600px";
                                 },
                                 error: function(xhr, status, error) {
                                     console.error('Error:', error);

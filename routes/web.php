@@ -165,6 +165,7 @@ Route::prefix('ATS')->group(function () {
     Route::post('/client/department/store', [ClientController::class, 'clientDepartmentStore'])->name('client.department.store');
     Route::delete('/client/department/delete/{id}', [ClientController::class, 'clientDepartmentDelete'])->name('client.department.delete');
     Route::get('/test', [ClientController::class, 'test']);
+    Route::get('/test1', [ClientController::class, 'test1']);
 
 
     //Candidate extra part

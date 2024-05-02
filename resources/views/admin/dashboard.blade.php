@@ -96,7 +96,7 @@
                                                             <th>No</th>
                                                             <th>Candidate Name</th>
                                                             <th>Candidate Email</th>
-                                                            <th>Action</th>
+                                                            <th class="text-center">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -161,7 +161,7 @@
                                                             <th>No</th>
                                                             <th>Candidate Name</th>
                                                             <th>Candidate Email</th>
-                                                            <th>Action</th>
+                                                            <th class="text-center">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -288,7 +288,7 @@
                                                         <th>Email</th>
                                                         <th>Manager</th>
                                                         <th>Consultant / Leader</th>
-                                                        <th>Action</th>
+                                                        <th class="text-center">Action</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

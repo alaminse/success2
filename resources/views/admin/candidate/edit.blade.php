@@ -1360,16 +1360,16 @@
                                                                 <option value="11" {{ old('remarkstype_id') == 11 ? 'selected' : '' }}>Assign To Own</option>
                                                             @endif
                                                             @if ($auth->roles_id == 4 || $auth->roles_id == 11)
-                                                            <option value="3" {{ old('remarkstype_id') == 3 ? 'selected' : '' }}>Assign To RC</option>
+                                                                <option value="3" {{ old('remarkstype_id') == 3 ? 'selected' : '' }}>Assign To RC</option>
                                                             @endif
                                                             @if ($auth->roles_id == 4)
                                                                 <option value="2" {{ old('remarkstype_id') == 2 ? 'selected' : '' }}>Assign To Team Leader</option>
                                                             @endif
                                                             @if ($auth->roles_id == 8 || $auth->roles_id == 11 || $auth->roles_id == 4)
-                                                            <option value="9" {{ old('remarkstype_id') == 9 ? 'selected' : '' }}>Reassign</option>
+                                                                <option value="9" {{ old('remarkstype_id') == 9 ? 'selected' : '' }}>Reassign</option>
                                                             @endif
                                                             @if ($auth->roles_id == 1 || $auth->roles_id == 4)
-                                                            <option value="12" {{ old('remarkstype_id') == 12 ? 'selected' : '' }}>Share to Other Managers (Admin / Manager use only)</option>
+                                                                <option value="12" {{ old('remarkstype_id') == 12 ? 'selected' : '' }}>Share to Other Managers (Admin / Manager use only)</option>
                                                             @endif
                                                             <option value="4" {{ old('remarkstype_id') == 4 ? 'selected' : '' }}>Candidate Follow Up</option>
                                                             <option value="5" {{ old('remarkstype_id') == 5 ? 'selected' : '' }}>Assign Interview</option>
@@ -1399,7 +1399,7 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Time</label>
                                                     <div class="col-sm-9">
-                                                        <input type="time" class="form-control" name="interview_time">
+                                                        <input type="time" class="form-control" name="interview_time" value="{{old('interview_time')}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1407,15 +1407,14 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Company <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <select name="interview_company"
+                                                        <select name="interview_company" id="interview_company"
                                                             class="form-control single-select-field">
                                                             <option value="">Select One</option>
                                                             @foreach ($clients as $client)
-                                                                <option value="{{ $client->id }}">
+                                                                <option value="{{ $client->id }}" {{ old('interview_company') == $client->id ? 'selected' : '' }}>
                                                                     {{ $client->client_name }} </option>
                                                             @endforeach
                                                         </select>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -1424,7 +1423,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Expected Salary</label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control"
-                                                            name="interview_expected_salary">
+                                                            name="interview_expected_salary" value="{{ old('interview_expected_salary') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1432,8 +1431,7 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Position <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control"
-                                                            name="interview_position">
+                                                        <input type="text" class="form-control" name="interview_position" id="interview_position" value="{{ old('interview_position') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1443,9 +1441,9 @@
                                                     <div class="col-sm-9">
                                                         <select name="interview_received_job_offer"
                                                             class="form-control single-select-field">
-                                                            <option value="pending">Pending</option>
-                                                            <option value="yes">Yes</option>
-                                                            <option value="no">No</option>
+                                                            <option value="pending" {{ old('interview_received_job_offer') == 'pending' ? 'selected' : '' }}>Pending</option>
+                                                            <option value="yes" {{ old('interview_received_job_offer') == 'yes' ? 'selected' : '' }}>Yes</option>
+                                                            <option value="no" {{ old('interview_received_job_offer') == 'no' ? 'selected' : '' }}>No</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1542,7 +1540,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Email Notice Date</label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control"
-                                                            name="shortlistEmailNoticeDate">
+                                                            name="shortlistEmailNoticeDate" value="{{ old('shortlistEmailNoticeDate') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1552,7 +1550,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Email Notice  Date</label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control"
-                                                            name="interviewEmailNoticeDate">
+                                                            name="interviewEmailNoticeDate" value="{{old('interviewEmailNoticeDate')}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1562,7 +1560,7 @@
                                                     class="col-sm-3 col-form-label fw-bold">Notice</label>
                                                     <div class="col-sm-9">
                                                         <select name="isNotice" class="form-control single-select-field" required>
-                                                            <option value="" selected disabled>Select One</option>
+                                                            <option value="" disabled>Select One</option>
                                                             <option value="1" {{ old('isNotice') == 1 ? 'selected' : '' }}>Yes</option>
                                                             <option value="0" {{ old('isNotice') == 0 ? 'selected' : '' }}>No</option>
                                                         </select>
@@ -1576,7 +1574,7 @@
                                                     <div class="col-sm-9">
                                                         <select name="Assign_to_manager"
                                                             class="form-control single-select-field">
-                                                            <option value="" selected disabled>Select One</option>
+                                                            <option value="" disabled>Select One</option>
                                                             @foreach ($users as $user)
                                                                 <option value="{{ $user->id }}" {{ old('Assign_to_manager') == $user->id || $candidate->Assign_to_manager == $user->id ? 'selected' : '' }}>
                                                                     {{ $user->employee_name }}
@@ -1592,7 +1590,7 @@
                                                     <div class="col-sm-9">
                                                         <select name="Assign_to_manager"
                                                             class="form-control single-select-field">
-                                                            <option value="" selected disabled>Select One</option>
+                                                            <option value="" disabled>Select One</option>
                                                             @foreach (\App\Models\Employee::select('id', 'employee_name')->where('roles_id', '!=', 1)->get() as $user)
                                                                 <option value="{{ $user->id }}" {{ old('Assign_to_manager') == $user->id || $candidate->Assign_to_manager == $user->id ? 'selected' : '' }}>
                                                                     {{ $user->employee_name }}
@@ -1608,7 +1606,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">AR
                                                     No</label>
                                                     <div class="col-sm-9">
-                                                        <select name="client_ar_no" id=""
+                                                        <select name="client_ar_no"
                                                             class="form-control single-select-field">
                                                             <option value="0">Select On</option>
                                                         </select>
@@ -1620,7 +1618,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Salary
                                                     <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="shortlistSalary" value="{{ old('shortlistSalary') || $candidate->shortlistSalary }}">
+                                                        <input type="text" class="form-control" name="shortlistSalary" value="{{ old('shortlistSalary', $candidate->shortlistSalary) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1741,7 +1739,7 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Date<span class="text-danger">*</span> </label>
                                                     <div class="col-sm-9">
-                                                        <input type="date" class="form-control" name="interview_date">
+                                                        <input type="date" class="form-control" name="interview_date" id="interview_date">
                                                     </div>
                                                 </div>
                                             </div>
@@ -2501,6 +2499,7 @@
                 $('body').on('change','#remark_type_test',function () {
                     var selectedValue = $(this).val();
 
+                    console.log(selectedValue);
                     if (selectedValue === '9') {
                         $('#reassign').show();
                     } else {
@@ -2561,11 +2560,14 @@
                     if (selectedValue === '5') {
                         $('#interviewTime').show().css('display', 'show');
                         $('#interviewCompany').show().css('display', 'show');
+                        $('#interview_company').prop('required', true);
                         $('#expectedSalary').show().css('display', 'show');
                         $('#interviewPosition').show().css('display', 'show');
+                        $('#interview_position').prop('required', true);
                         $('#receivedJobOffer').show().css('display', 'show');
                         $('#emailNoticeDate').show().css('display', 'show');
                         $('#interviewDate').show().css('display', 'show');
+                        $('#interview_date').prop('required', true);
                         $('#interviewBy').show().css('display', 'show');
                         $('#jobOfferSalary').show().css('display', 'show');
                         $('#attendInterview').show().css('display', 'show');
@@ -2574,11 +2576,14 @@
                     } else {
                         $('#interviewTime').hide().css('display', 'none');
                         $('#interviewCompany').hide().css('display', 'none');
+                        $('#interview_company').prop('required', false);
                         $('#expectedSalary').hide().css('display', 'none');
                         $('#interviewPosition').hide().css('display', 'none');
+                        $('#interview_position').prop('required', false);
                         $('#receivedJobOffer').hide().css('display', 'none');
                         $('#emailNoticeDate').hide().css('display', 'none');
                         $('#interviewDate').hide().css('display', 'none');
+                        $('#interview_date').prop('required', false);
                         $('#interviewBy').hide().css('display', 'none');
                         $('#jobOfferSalary').hide().css('display', 'none');
                         $('#attendInterview').hide().css('display', 'none');
@@ -2635,6 +2640,7 @@
                         $('#shortlistContractEndDate').hide().css('display', 'none');
                     }
                 });
+                $('#remark_type_test').trigger('change');
 
                 function loadTimeSheetDetails(timesheetId) {
                     let html = '';

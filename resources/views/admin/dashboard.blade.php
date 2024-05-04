@@ -72,6 +72,69 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="row">
+                    @if ($own_manager != [])
+                        <div class="col-xl-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="accordion accordion-flush-man" id="accordionFlushExample">
+                                        <div class="accordion-item">
+                                                <button class="accordion-button fw-medium collapsed" type="button"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#flush-collapse-own-manager"
+                                                    aria-expanded="false" aria-controls="flush-collapse-own-manager">
+                                                    Own Manager: - Total
+                                                    {{ count($own_manager) }} Resumes
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapse-own-manager" class="accordion-collapse collapse"
+                                                aria-labelledby="flush-heading-own-manager"
+                                                data-bs-parent="#accordionFlushExample" style="">
+                                                <table class="table table-bordered mb-0 dataTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No</th>
+                                                            <th>Candidate Name</th>
+                                                            <th>Candidate Email</th>
+                                                            <th class="text-center">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($own_manager ?? [] as $manager)
+
+                                                            <tr>
+                                                                <td>{{ $loop->index + 1 }}</td>
+                                                                <td>{{ $manager->candidate->candidate_name }}</td>
+                                                                <td>{{ $manager->candidate->candidate_email }}</td>
+                                                                <td class="d-flex flex-row">
+                                                                    @php
+                                                                        $main = \App\Models\CandidateResume::where('candidate_id', $manager->candidate->id)->where('isMain', 1)->first();
+                                                                        if($main != null)
+                                                                        {
+                                                                            $resume_file_path = $main->resume_file_path;
+                                                                        } else{
+                                                                            $resume_file_path = null;
+                                                                        }
+                                                                    @endphp
+                                                                    {{-- @if($resume_file_path != null) --}}
+                                                                    <a title="Add Remarks"  class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$manager->candidate['id'].'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
+                                                                    <button title="Show Resume" type="button"
+                                                                        class="btn btn-info me-2 resumePath btn-sm"
+                                                                        data-bs-toggle="modal" data-bs-target="#showResume"
+                                                                        data-file-path="{{$resume_file_path }}" {{ $resume_file_path != null ? '' : 'disabled' }}>D</button>
+                                                                    {{-- @endif --}}
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div><!-- end accordion -->
+                                </div><!-- end card-body -->
+                            </div>
+                        </div>
+                    @endif
                     @foreach ($managers as $key => $manager)
                         <div class="col-xl-6">
                             <div class="card">
@@ -305,7 +368,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
-                                                                @if ($auth->roles_id == 4)
+                                                                @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -379,7 +442,7 @@
                                                                 <td>{{ \Carbon\Carbon::parse($candidate->candidate['created_at'])->format('d-M-Y') }}
                                                                 </td>
                                                                 <td class="d-flex flex-row">
-                                                                    @if ($auth->roles_id == 4)
+                                                                     @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                         @include('admin.dashboard.inc.select')
                                                                     @endif
                                                                     <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -447,7 +510,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
-                                                                @if ($auth->roles_id == 4)
+                                                                 @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -525,7 +588,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row {{ $candidate['remark_id'] == 8 ? 'text-danger' : '' }}">
-                                                                @if ($auth->roles_id == 4)
+                                                                 @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -593,7 +656,7 @@
                                                                 <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                                 </td>
                                                                 <td class="d-flex flex-row">
-                                                                    @if ($auth->roles_id == 4)
+                                                                    @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                         @include('admin.dashboard.inc.select')
                                                                     @endif
                                                                     <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -661,7 +724,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
-                                                                @if ($auth->roles_id == 4)
+                                                                @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks"  class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -727,7 +790,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
-                                                                @if ($auth->roles_id == 4)
+                                                                @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks"  class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -793,7 +856,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
-                                                                @if ($auth->roles_id == 4)
+                                                                @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks"  class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -859,7 +922,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
-                                                                @if ($auth->roles_id == 4)
+                                                                @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks"  class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -997,7 +1060,7 @@
                                                                 <td>{{ \Carbon\Carbon::parse($candidate->candidate['created_at'])->format('d-M-Y') }}
                                                                 </td>
                                                                 <td class="d-flex flex-row">
-                                                                    @if ($auth->roles_id == 4)
+                                                                    @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                         @include('admin.dashboard.inc.select')
                                                                     @endif
                                                                     <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -1065,7 +1128,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
-                                                                @if ($auth->roles_id == 4)
+                                                                 @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks"  class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>

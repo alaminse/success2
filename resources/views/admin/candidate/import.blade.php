@@ -123,20 +123,20 @@
                                         @endphp
                                         @if($auth->roles_id != 8)
                                         <div class="row mb-4">
-                                            <label for="one" class="col-sm-4 col-form-label">Assaign To<span
+                                            <label for="one" class="col-sm-4 col-form-label">Assign To<span
                                                         class="text-danger">*</span></label>
                                             <div class="col-sm-8">
-                                                <select name="assaign_to" required class="form-control single-select-field">
+                                                <select name="assign_to" required class="form-control single-select-field">
                                                     <option value="">Select One</option>
-                                                    @foreach ($assaignPerson as $assaign)
-                                                        <option value="{{ $assaign->id }}">{{ $assaign->employee_name }}
+                                                    @foreach ($assignPerson as $assign)
+                                                        <option value="{{ $assign->id }}">{{ $assign->employee_name }}
                                                         </option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                         @else
-                                            <input type="hidden" name="assaign_to" value="{{ $auth->id }}">
+                                            <input type="hidden" name="assign_to" value="{{ $auth->id }}">
                                         @endif
                                         <button type="submit" id="" class="btn btn-info btn-sm">Add to list</button>
                                     </form>

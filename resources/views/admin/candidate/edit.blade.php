@@ -817,46 +817,43 @@
                                     <p>Name 2 persons who are not your relatives</p>
                                     <div class="row mb-5">
                                         <div class="col-lg-6">
-                                            <div class="mt-5 mt-lg-4 mt-xl-0">
-                                                <div class="row mb-1">
-                                                    <label for="one" class="col-sm-3 col-form-label">Name</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="candidate_referee_name1"
-                                                            class="form-control" placeholder="Name"
-                                                            value="{{ $candidate->candidate_referee_name1 }}">
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-1">
-                                                    <label for="one" class="col-sm-3 col-form-label">Years
-                                                        Known</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="candidate_referee_year_know1"
-                                                            class="form-control" placeholder="Year"
-                                                            value="{{ $candidate->candidate_referee_year_know1 }}">
-                                                    </div>
+                                            <div class="row mb-1">
+                                                <label for="one" class="col-sm-3 col-form-label">Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_name1"
+                                                        class="form-control" placeholder="Name"
+                                                        value="{{ $candidate->candidate_referee_name1 }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="mt-5 mt-lg-4 mt-xl-0">
-                                                <div class="row mb-1">
-                                                    <label for="one"
-                                                        class="col-sm-3 col-form-label">Occupation</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control"
-                                                            name="candidate_referee_occupation1" placeholder="Occupation"
-                                                            value="{{ $candidate->candidate_referee_occupation1 }}">
-                                                    </div>
+                                            <div class="row mb-1">
+                                                <label for="one" class="col-sm-3 col-form-label">Years Known</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_year_know1" class="form-control" placeholder="Year" value="{{ $candidate->candidate_referee_year_know1 }}">
                                                 </div>
-                                                <div class="row mb-1">
-                                                    <label for="one" class="col-sm-4 col-form-label">Contact No /
-                                                        Email
-                                                        Address</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="candidate_referee_contact1"
-                                                            class="form-control" placeholder="Contact No"
-                                                            value="{{ $candidate->candidate_referee_contact1 }}">
-                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row mb-1">
+                                                <label for="one"
+                                                    class="col-sm-3 col-form-label">Occupation</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="candidate_referee_occupation1" placeholder="Occupation"
+                                                        value="{{ $candidate->candidate_referee_occupation1 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row mb-1">
+                                                <label for="one" class="col-sm-3 col-form-label">Contact No /
+                                                    Email
+                                                    Address</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_contact1"
+                                                        class="form-control" placeholder="Contact No"
+                                                        value="{{ $candidate->candidate_referee_contact1 }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -895,10 +892,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
-                                                    <label for="one" class="col-sm-4 col-form-label">Contact No /
+                                                    <label for="one" class="col-sm-3 col-form-label">Contact No /
                                                         Email
                                                         Address</label>
-                                                    <div class="col-sm-8">
+                                                    <div class="col-sm-9">
                                                         <input type="text" name="candidate_referee_contact2"
                                                             class="form-control" placeholder="Contact No"
                                                             value="{{ $candidate->candidate_referee_contact2 }}">
@@ -1384,9 +1381,9 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Client </label>
                                                     <div class="col-sm-9">
-                                                        <select name="assign_client_id"
+                                                        <select name="assign_client_id" id="assign_client_id"
                                                             class="form-control single-select-field">
-                                                            <option value="" selected disabled>Select One</option>
+                                                            <option value="">Select One</option>
                                                             @foreach ($clients as $client)
                                                                 <option value="{{ $client->id }}">
                                                                     {{ $client->client_name }} </option>
@@ -1452,7 +1449,7 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Client Company <span class="text-danger">*</span> </label>
                                                     <div class="col-sm-9">
-                                                        <select name="client_company"
+                                                        <select name="client_company" id="shortlist_client_company"
                                                             class="form-control single-select-field">
                                                             <option value="">Select One</option>
                                                             @foreach ($clients as $client)
@@ -1486,7 +1483,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Job Title <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
                                                         <input type="text" class="form-control"
-                                                            name="shortlistJobTitle">
+                                                            name="shortlistJobTitle" id="shortlist_job_title">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1494,7 +1491,7 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Job Type <span class="text-danger">*</span> </label>
                                                     <div class="col-sm-9">
-                                                        <select name="shortlistJobType"
+                                                        <select name="shortlistJobType" id="shortlist_job_type"
                                                             class="form-control single-select-field">
                                                             <option value="">Select One</option>
                                                             @foreach ($job_types as $type)
@@ -1574,9 +1571,9 @@
                                                     <div class="col-sm-9">
                                                         <select name="Assign_to_manager"
                                                             class="form-control single-select-field">
-                                                            <option value="" disabled>Select One</option>
+                                                            <option value="">Select One</option>
                                                             @foreach ($users as $user)
-                                                                <option value="{{ $user->id }}" {{ old('Assign_to_manager') == $user->id || $candidate->Assign_to_manager == $user->id ? 'selected' : '' }}>
+                                                                <option value="{{ $user->id }}" {{ old('Assign_to_manager', $candidate->Assign_to_manager) == $user->id ? 'selected' : '' }}>
                                                                     {{ $user->employee_name }}
                                                                 </option>
                                                             @endforeach
@@ -1588,11 +1585,11 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To <span class="text-danger">*</span> </label>
                                                     <div class="col-sm-9">
-                                                        <select name="Assign_to_manager"
+                                                        <select name="Assign_to_manager_r"
                                                             class="form-control single-select-field">
-                                                            <option value="" disabled>Select One</option>
+                                                            <option value="">Select One</option>
                                                             @foreach (\App\Models\Employee::select('id', 'employee_name')->where('roles_id', '!=', 1)->get() as $user)
-                                                                <option value="{{ $user->id }}" {{ old('Assign_to_manager') == $user->id || $candidate->Assign_to_manager == $user->id ? 'selected' : '' }}>
+                                                                <option value="{{ $user->id }}" {{ old('Assign_to_manager', $candidate->Assign_to_manager) == $user->id ? 'selected' : '' }}>
                                                                     {{ $user->employee_name }}
                                                                 </option>
                                                             @endforeach
@@ -1618,7 +1615,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Salary
                                                     <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <input type="text" class="form-control" name="shortlistSalary" value="{{ old('shortlistSalary', $candidate->shortlistSalary) }}">
+                                                        <input type="text" class="form-control" id="shortlist_salary" name="shortlistSalary" value="{{ old('shortlistSalary', $candidate->shortlistSalary) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1657,7 +1654,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Start Date <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control"
-                                                            name="shortlistStartDate">
+                                                            name="shortlistStartDate" id="shortlist_start_date">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1665,7 +1662,7 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Reminder Period <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
-                                                        <select name="shortlistReminderPeriod"
+                                                        <select name="shortlistReminderPeriod" id="shortlist_reminder_period"
                                                             class="form-control single-select-field">
                                                             <option value="1 Week Before">1 Week Before</option>
                                                             <option value="2 Week Before">2 Week Before</option>
@@ -1685,7 +1682,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Contract Signing Time <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
                                                         <input type="time" class="form-control"
-                                                            name="shortlistContractSigningTime">
+                                                            name="shortlistContractSigningTime" id="shortlist_contract_signing_time">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1694,7 +1691,7 @@
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Contract End Date <span class="text-danger">*</span></label>
                                                     <div class="col-sm-9">
                                                         <input type="date" class="form-control"
-                                                            name="shortlistContractEndDate">
+                                                            name="shortlistContractEndDate" id="shortlist_contract_end_date">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1795,7 +1792,7 @@
                                                     <label for="remarks" class="col-sm-12 col-md-1 col-form-label fw-bold">Remark</label>
                                                     <div class="col-sm-12 col-md-11">
                                                         <div class="d-flex flex-row-reverse description_textarea">
-                                                            <textarea name="remarks" id="ckeditor-classic" class="editor" rows="2"> {{ old('remarks') }} </textarea>
+                                                            <textarea name="remarks" id="ckeditor-classic" class="editor" rows="2" required> {{ old('remarks') }} </textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1824,7 +1821,7 @@
                                                 @foreach($client_remarks as $remark)
                                                     <tr>
                                                         <td>{{ $loop->index + 1 }}</td>
-                                                        <td>{{ $remark->Assign->name }}</td>
+                                                        <td>{{ $remark->assignTo?->employee_name }}</td>
                                                         <td>{{ $remark->assign_client?->client?->client_name }}</td>
                                                         <td>{{ $remark->remarksType->remarkstype_code }}</td>
                                                         <td>{!! $remark->remarks !!}</td>
@@ -1834,18 +1831,17 @@
                                                         <td>{{ $remark->created_at->format('d-M-y') }}
                                                         </td>
                                                         <td style="display: flex;">
-                                                            <a href="{{ route('candidates.edit.remark', ['candidate' => $candidate->id, 'remark' => $remark->id]) }}" class="btn btn-info btn-sm me-3 {{ Auth::user()->id == $remark->created_by ? '' : 'disabled' }}">Edit</a>
-                                                            {{-- @if (App\Helpers\FileHelper::usr()->can('candidate.remark.delete'))
-                                                                <form
-                                                                    action="{{ route('candidate.remark.delete', $remark->id) }}"
-                                                                    method="POST">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button class="btn btn-danger btn-sm"
-                                                                        onclick="return confirm('Are you sure you want to delete this item?')"
-                                                                        type="submit">Delete</button>
-                                                                </form>
-                                                            @endif --}}
+                                                            @php
+                                                                $isDisabled = !(
+                                                                    ($auth->roles_id == 1) ||
+                                                                    ($auth->roles_id == 4 && in_array($remark->type, [2, 12, 3])) ||
+                                                                    ($auth->roles_id == 8 && in_array($remark->type, [11, 3])) ||
+                                                                    ($auth->roles_id == 11 && in_array($remark->type, [11, 3])) ||
+                                                                    in_array($remark->type, [4, 5, 6, 7, 22])
+                                                                );
+                                                            @endphp
+
+                                                            <a href="{{ route('candidates.edit.remark', ['candidate' => $candidate->id, 'remark' => $remark->id]) }}" class="btn btn-info btn-sm me-3 @if ($isDisabled) disabled @endif">Edit</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -2594,50 +2590,68 @@
                     if (selectedValue === '6') {
                         $('#AssignToClient').show().css('display', 'show');
                         $('#clientArNo').show().css('display', 'show');
+                        $('#assign_client_id').prop('required', true);
                     } else {
                         $('#AssignToClient').hide().css('display', 'none');
                         $('#clientArNo').hide().css('display', 'none');
+                        $('#assign_client_id').prop('required', false);
                     }
 
                     if (selectedValue === '7') {
                         $('#shortlistClientCompany').show().css('display', 'show');
+                        $('#shortlist_client_company').prop('required', true);
                         $('#shortlistDepartment').show().css('display', 'show');
                         $('#shortlistPlacement').show().css('display', 'show');
                         $('#shortlistJobTitle').show().css('display', 'show');
+                        $('#shortlist_job_title').prop('required', true);
                         $('#shortlistJobType').show().css('display', 'show');
+                        $('#shortlist_job_type').prop('required', true);
                         $('#shortlistProbationPeriod').show().css('display', 'show');
                         $('#shortlistContractSigningDate').show().css('display', 'show');
                         $('#shortlistEmailNoticeDate').show().css('display', 'show');
                         $('#shortlistSalary').show().css('display', 'show');
+                        $('#shortlist_salary').prop('required', true);
                         $('#shortlistArNo').show().css('display', 'show');
                         $('#shortlistHourlyRate').show().css('display', 'show');
                         $('#shortlistAdminFee').show().css('display', 'show');
                         $('#shortlistStartDate').show().css('display', 'show');
+                        $('#shortlist_start_date').prop('required', true);
                         $('#shortlistReminderPeriod').show().css('display', 'show');
+                        $('#shortlist_reminder_period').prop('required', true);
                         $('#shortlistContractSigningTime').show().css('display', 'show');
+                        $('#shortlist_contract_signing_time').prop('required', true);
                         $('#shortlistLastDay').show().css('display', 'show');
                         $('#shortlistEmailNoticeTime').show().css('display', 'show');
                         $('#shortlistContractEndDate').show().css('display', 'show');
+                        $('#shortlist_contract_end_date').prop('required', true);
                     } else {
                         $('#shortlistClientCompany').hide().css('display', 'none');
+                        $('#shortlist_client_company').prop('required', false);
                         $('#shortlistDepartment').hide().css('display', 'none');
                         $('#shortlistPlacement').hide().css('display', 'none');
                         $('#shortlistJobTitle').show().css('display', 'none');
+                        $('#shortlist_job_title').prop('required', false);
                         $('#shortlistJobType').hide().css('display', 'none');
+                        $('#shortlist_job_type').prop('required', false);
                         $('#shortlistProbationPeriod').hide().css('display', 'none');
                         $('#shortlistContractSigningDate').hide().css('display', 'none');
                         $('#shortlistEmailNoticeDate').hide().css('display', 'none');
                         $('#shortlistSalary').hide().css('display', 'none');
+                        $('#shortlist_salary').prop('required', false);
                         $('#shortlistArNo').hide().css('display', 'none');
                         $('#shortlistHourlyRate').hide().css('display', 'none');
                         $('#shortlistAdminFee').hide().css('display', 'none');
                         $('#shortlistStartDate').hide().css('display', 'none');
+                        $('#shortlist_start_date').prop('required', false);
                         $('#testone').hide().css('display', 'none');
                         $('#shortlistReminderPeriod').hide().css('display', 'none');
+                        $('#shortlist_reminder_period').prop('required', false);
                         $('#shortlistContractSigningTime').hide().css('display', 'none');
+                        $('#shortlist_contract_signing_time').prop('required', false);
                         $('#shortlistLastDay').hide().css('display', 'none');
                         $('#shortlistEmailNoticeTime').hide().css('display', 'none');
                         $('#shortlistContractEndDate').hide().css('display', 'none');
+                        $('#shortlist_contract_end_date').prop('required', false);
                     }
                 });
                 $('#remark_type_test').trigger('change');

@@ -86,7 +86,8 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id="remark-tab" class="nav-link" data-bs-toggle="tab" href="#remark" role="tab">
+                                        <a id="remark-tab" class="nav-link" data-bs-toggle="tab" href="#remark"
+                                            role="tab">
                                             <span class="d-sm-block">Remark</span>
                                         </a>
                                     </li>
@@ -239,7 +240,8 @@
                                                     <select name="religions_id" id="religions_id"
                                                         class="form-control single-select-field">
                                                         @foreach ($religion_data as $row)
-                                                            <option value="{{ $row->id }}" {{ old('religions_id') == $row->id || $candidate->religions_id == $row->id ? 'selected' : '' }}>
+                                                            <option value="{{ $row->id }}"
+                                                                {{ old('religions_id') == $row->id || $candidate->religions_id == $row->id ? 'selected' : '' }}>
                                                                 {{ $row->religion_code }}</option>
                                                         @endforeach
                                                     </select>
@@ -282,7 +284,8 @@
                                                     class="col-sm-5 col-form-label fw-bold">Date of issue</label>
                                                 <div class="col-sm-7">
                                                     <input id="nationality_date_of_issue" type="date"
-                                                        name="nationality_date_of_issue" class="form-control" value="{{$candidate->nationality_date_of_issue}}">
+                                                        name="nationality_date_of_issue" class="form-control"
+                                                        value="{{ $candidate->nationality_date_of_issue }}">
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
@@ -290,7 +293,7 @@
                                                     class="col-sm-5 col-form-label fw-bold">Mobile</label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control" name="candidate_mobile"
-                                                        value="{{$candidate->candidate_mobile}}" required>
+                                                        value="{{ $candidate->candidate_mobile }}" required>
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
@@ -298,7 +301,8 @@
                                                     class="col-sm-5 col-form-label fw-bold">Home Tel</label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control" id="candidate_home_phone"
-                                                        name="candidate_home_phone" value="{{$candidate->candidate_home_phone}}">
+                                                        name="candidate_home_phone"
+                                                        value="{{ $candidate->candidate_home_phone }}">
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
@@ -317,7 +321,8 @@
                                                         class="form-control single-select-field">
                                                         <option value="">Select One</option>
                                                         @foreach ($passtype_data as $row)
-                                                            <option value="{{ $row->id }}" {{ $row->id == old('passtypes_id', $candidate->passtypes_id) ? 'selected' : '' }}>
+                                                            <option value="{{ $row->id }}"
+                                                                {{ $row->id == old('passtypes_id', $candidate->passtypes_id) ? 'selected' : '' }}>
                                                                 {{ $row->passtype_code }}</option>
                                                         @endforeach
                                                     </select>
@@ -331,7 +336,8 @@
                                                         id="candidate_outlet_id" name="candidate_outlet_id" required>
                                                         <option value="">Select One</option>
                                                         @foreach ($outlet_data as $row)
-                                                            <option value="{{ $row->id }}" {{ $row->id == old('candidate_outlet_id', $candidate->candidate_outlet_id) ? 'selected' : '' }}>
+                                                            <option value="{{ $row->id }}"
+                                                                {{ $row->id == old('candidate_outlet_id', $candidate->candidate_outlet_id) ? 'selected' : '' }}>
                                                                 {{ $row->outlet_name }}</option>
                                                         @endforeach
                                                     </select>
@@ -496,7 +502,8 @@
                                                 </div>
                                                 <div class="row mb-4">
                                                     <div class="row">
-                                                        <label for="description" class="col-sm-3 col-form-label">Remarks</label>
+                                                        <label for="description"
+                                                            class="col-sm-3 col-form-label">Remarks</label>
                                                         {{-- <label for="description" class="col-sm-12 col-md-2 col-form-label fw-bold">Description</label> --}}
                                                         <div class="col-sm-12 col-md-10">
                                                             <div class="d-flex flex-row-reverse description_textarea">
@@ -774,7 +781,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($families as $family)
+                                                @foreach ($families as $family)
                                                     <tr>
                                                         <td>{{ $loop->index + 1 }} </td>
                                                         <td>{{ $family->name }} </td>
@@ -813,92 +820,89 @@
                                     <p>Name 2 persons who are not your relatives</p>
                                     <div class="row mb-5">
                                         <div class="col-lg-6">
-                                            <div class="mt-5 mt-lg-4 mt-xl-0">
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-3 col-form-label">Name</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="candidate_referee_name1"
-                                                            class="form-control" placeholder="Name"
-                                                            value="{{ $candidate->candidate_referee_name1 }}">
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-3 col-form-label">Years
-                                                        Known</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="candidate_referee_year_know1"
-                                                            class="form-control" placeholder="Year"
-                                                            value="{{ $candidate->candidate_referee_year_know1 }}">
-                                                    </div>
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_name1"
+                                                        class="form-control" placeholder="Name"
+                                                        value="{{ $candidate->candidate_referee_name1 }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="mt-5 mt-lg-4 mt-xl-0">
-                                                <div class="row mb-4">
-                                                    <label for="one"
-                                                        class="col-sm-3 col-form-label">Occupation</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control"
-                                                            name="candidate_referee_occupation1" placeholder="Occupation"
-                                                            value="{{ $candidate->candidate_referee_occupation1 }}">
-                                                    </div>
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Years
+                                                    Known</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_year_know1"
+                                                        class="form-control" placeholder="Year"
+                                                        value="{{ $candidate->candidate_referee_year_know1 }}">
                                                 </div>
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-4 col-form-label">Contact No /
-                                                        Email
-                                                        Address</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="candidate_referee_contact1"
-                                                            class="form-control" placeholder="Contact No"
-                                                            value="{{ $candidate->candidate_referee_contact1 }}">
-                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Occupation</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="candidate_referee_occupation1" placeholder="Occupation"
+                                                        value="{{ $candidate->candidate_referee_occupation1 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Contact No / Email
+                                                    Address</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_contact1"
+                                                        class="form-control" placeholder="Contact No"
+                                                        value="{{ $candidate->candidate_referee_contact1 }}">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6">
-                                            <div class="mt-5 mt-lg-4 mt-xl-0">
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-3 col-form-label">Name</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" class="form-control"
-                                                            name="candidate_referee_name2" placeholder="Name"
-                                                            value="{{ $candidate->candidate_referee_name2 }}">
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-3 col-form-label">Years
-                                                        Known</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="candidate_referee_year_know2"
-                                                            class="form-control" placeholder="Year"
-                                                            value="{{ $candidate->candidate_referee_year_know2 }}">
-                                                    </div>
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Name</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="candidate_referee_name2" placeholder="Name"
+                                                        value="{{ $candidate->candidate_referee_name2 }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="mt-5 mt-lg-4 mt-xl-0">
-                                                <div class="row mb-4">
-                                                    <label for="one"
-                                                        class="col-sm-3 col-form-label">Occupation</label>
-                                                    <div class="col-sm-9">
-                                                        <input type="text" name="candidate_referee_occupation2"
-                                                            class="form-control" placeholder="Occupation"
-                                                            value="{{ $candidate->candidate_referee_occupation2 }}">
-                                                    </div>
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Years
+                                                    Known</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_year_know2"
+                                                        class="form-control" placeholder="Year"
+                                                        value="{{ $candidate->candidate_referee_year_know2 }}">
                                                 </div>
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-4 col-form-label">Contact No /
-                                                        Email
-                                                        Address</label>
-                                                    <div class="col-sm-8">
-                                                        <input type="text" name="candidate_referee_contact2"
-                                                            class="form-control" placeholder="Contact No"
-                                                            value="{{ $candidate->candidate_referee_contact2 }}">
-                                                    </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Occupation</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_occupation2"
+                                                        class="form-control" placeholder="Occupation"
+                                                        value="{{ $candidate->candidate_referee_occupation2 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row mb-4">
+                                                <label for="one" class="col-sm-3 col-form-label">Contact No /
+                                                    Email
+                                                    Address</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="candidate_referee_contact2"
+                                                        class="form-control" placeholder="Contact No"
+                                                        value="{{ $candidate->candidate_referee_contact2 }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -1201,7 +1205,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($candidate_resume as $resume)
+                                                @foreach ($candidate_resume as $resume)
                                                     <tr>
                                                         <td>
                                                             {{ $loop->index + 1 }}
@@ -1275,7 +1279,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($client_files as $file)
+                                                @foreach ($client_files as $file)
                                                     <tr>
                                                         <td>{{ $loop->index + 1 }}</td>
                                                         <td>
@@ -1319,506 +1323,593 @@
                                 </div>
                             </div>
                             <div class="tab-pane" id="remark" role="tabpanel">
-                                <div class="row">
-                                    <h5>Update Remarks</h5>
-                                    <p class="mb-0"><strong>Name:</strong> {{ $candidate->candidate_name }}</p>
-                                    <p><strong>NRIC:</strong> {{ $candidate->candidate_nric }}</p>
-                                    <div class="col-md-6 col-lg-6 mb-1">
-                                        <div class="row">
-                                            <input type="hidden" value="{{ $candidate->id }}" name="candidate_id">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Remark Type</label>
-                                            <div class="col-sm-9">
-                                                <select name="remarkstype_id" class="form-control single-select-field" disabled
-                                                    id="remark_type">
-                                                    <option value="" selected disabled>Select One</option>
-                                                    @if ($auth->roles_id == 1)
-                                                        <option value="1" {{ old('remarkstype_id') == 1 || $remark->remarkstype_id == 1 ? 'selected' : '' }}>Assign To Manager</option>
-                                                    @endif
-                                                    @if ($auth->roles_id == 8)
-                                                        <option value="11" {{ old('remarkstype_id') == 11 || $remark->remarkstype_id == 11 ? 'selected' : '' }}>Assign To Own</option>
-                                                    @endif
-                                                    @if ($auth->roles_id == 4 || $auth->roles_id == 11)
-                                                    <option value="3" {{ old('remarkstype_id') == 3 || $remark->remarkstype_id == 3 ? 'selected' : '' }}>Assign To RC</option>
-                                                    @endif
-                                                    @if ($auth->roles_id == 4)
-                                                        <option value="2" {{ old('remarkstype_id') == 2 || $remark->remarkstype_id == 2 ? 'selected' : '' }}>Assign To Team Leader</option>
-                                                    @endif
-                                                    @if ($auth->roles_id == 8 || $auth->roles_id == 11 || $auth->roles_id == 4)
-                                                    <option value="9" {{ old('remarkstype_id') == 9 || $remark->remarkstype_id == 9 ? 'selected' : '' }}>Reassign</option>
-                                                    @endif
-                                                    @if ($auth->roles_id == 1 || $auth->roles_id == 4)
-                                                    <option value="12" {{ old('remarkstype_id') == 12 || $remark->remarkstype_id == 12 ? 'selected' : '' }}>Share to Other Managers (Admin / Manager use only)</option>
-                                                    @endif
-                                                    <option value="4" {{ old('remarkstype_id') == 4 || $remark->remarkstype_id == 4 ? 'selected' : '' }}>Candidate Follow Up</option>
-                                                    <option value="5" {{ old('remarkstype_id') == 5 || $remark->remarkstype_id == 5 ? 'selected' : '' }}>Assign Interview</option>
-                                                    <option value="6" {{ old('remarkstype_id') == 6 || $remark->remarkstype_id == 6 ? 'selected' : '' }}>Assign To Client</option>
-                                                    <option value="7" {{ old('remarkstype_id') == 7 || $remark->remarkstype_id == 7 ? 'selected' : '' }}>Shortlisted</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{-- @dump($remark->assign_client->client->id) --}}
-                                    <div class="col-md-6 col-lg-6 mb-1" id="AssignToClient" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Client </label>
-                                            <div class="col-sm-9">
-                                                <select name="assign_client_id"
-                                                    class="form-control single-select-field" disabled>
-                                                    @foreach ($clients as $client)
-                                                        <option value="{{ $client->id }}" {{ old('assign_client_id', $remark->assign_client?->client->id) == $client->id ? 'selected' : '' }} >
-                                                            {{ $client->client_name }} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="interviewTime" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Time</label>
-                                            <div class="col-sm-9">
-                                                <input type="time" class="form-control" name="interview_time" value="{{ old('interview_time', $remark->interview?->interview_time) }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="interviewCompany" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Company <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <select name="interview_company" id="interview_company"
-                                                    class="form-control single-select-field">
-                                                    <option value="">Select One</option>
-                                                    @foreach ($clients as $client)
-                                                        <option value="{{ $client->id }}" {{ (old('interview_company', $remark->interview?->interview_company) == $client->id) ? 'selected' : '' }}> {{ $client->client_name }} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="expectedSalary" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Expected
-                                                Salary</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    name="interview_expected_salary" value="{{ old('interview_expected_salary', $remark->interview?->expected_salary) }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="interviewPosition" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Interview
-                                                Position <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" id="interview_position"
-                                                    name="interview_position" value="{{ old('interview_position', $remark->interview?->interview_position) }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="receivedJobOffer" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Received Job Offer</label>
-                                            <div class="col-sm-9">
-                                                <select name="interview_received_job_offer"
-                                                    class="form-control single-select-field">
-                                                    <option value="pending"  {{ (old('interview_received_job_offer', $remark->interview?->receive_job_offer) == 'pending') ? 'selected' : '' }}>Pending</option>
-                                                    <option value="yes"  {{ (old('interview_received_job_offer', $remark->interview?->receive_job_offer) == 'yes') ? 'selected' : '' }}>Yes</option>
-                                                    <option value="no"  {{ (old('interview_received_job_offer', $remark->interview?->receive_job_offer) == 'no') ? 'selected' : '' }}>No</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                        <input type="hidden" name="interview_id" value="{{$remark->interview?->id}}">
-                                        <input type="hidden" name="shortlist_id" value="{{$remark->shortlist?->id}}">
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistClientCompany" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Client Company <span class="text-danger">*</span> </label>
-
-                                            <div class="col-sm-9">
-                                                <select name="client_company"
-                                                    class="form-control single-select-field">
-                                                    <option value="" selected disabled>Select One</option>
-                                                    @foreach ($clients as $client)
-                                                        <option value="{{ $client->id }}" {{ (old('client_company') == $client->id || ($remark && $remark->client_company == $client->id)) ? 'selected' : '' }}>
-                                                            {{ $client->client_name }} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistDepartment" style="display: none;">
-                                        <div class="row">
-                                            <label for="one"
-                                                class="col-sm-3 col-form-label fw-bold">Department</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    name="shortlistDepartment" value="{{ old('shortlistDepartment', isset($remark->shortlist?->depertment) ? $remark->shortlist?->depertment : '') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistPlacement" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Placement / Recruitment Fee </label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    name="shortlistPlacement" value="{{ old('shortlistPlacement', isset($remark->shortlist?->placement_recruitment_fee) ? $remark->shortlist?->placement_recruitment_fee : '') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistJobTitle" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Job Title
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    name="shortlistJobTitle"  value="{{ old('shortlistJobTitle', isset($remark->shortlist?->job_title) ? $remark->shortlist?->job_title : '') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistJobType" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Job Type
-                                                <span class="text-danger">*</span> </label>
-                                            <div class="col-sm-9">
-                                                <select name="shortlistJobType"
-                                                    class="form-control single-select-field">
-                                                    <option value="" selected disabled>Select One</option>
-                                                    @foreach ($job_types as $type)
-                                                        <option value="{{ $type->id }}" {{ (old('shortlistJobType', $remark->shortlist?->job_type) == $type->id) ? 'selected' : '' }}>
-                                                            {{ $type->jobtype_code }} </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistProbationPeriod"
-                                        style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Probation
-                                                Period</label>
-                                            <div class="col-sm-9">
-                                                <select name="shortlistProbationPeriod"
-                                                    class="form-control single-select-field">
-                                                    <option>Select One</option>
-                                                    <option value="0" {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 0 ? 'selected' : '' }}>No Probation</option>
-                                                    <option value="1" {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 1 ? 'selected' : '' }}>1 Month</option>
-                                                    <option value="2" {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 2 ? 'selected' : '' }}>2 Months</option>
-                                                    <option value="3" {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 3 ? 'selected' : '' }}>3 Months</option>
-                                                    <option value="4" {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 4 ? 'selected' : '' }}>4 Months</option>
-                                                    <option value="5" {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 5 ? 'selected' : '' }}>5 Months</option>
-                                                    <option value="6" {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 6 ? 'selected' : '' }}>6 Months</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistContractSigningDate"
-                                        style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Contract
-                                                Signing
-                                                Date <span class="text-danger"></span></label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control"
-                                                    name="shortlistContractSigningDate" value="{{ old('shortlistContractSigningDate', isset($remark->shortlist?->contact_signing_date) ? $remark->shortlist?->contact_signing_date : '') }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistEmailNoticeDate"
-                                        style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Email Notice Date</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control"
-                                                    name="shortlistEmailNoticeDate" value="{{ old('shortlistEmailNoticeDate', $remark->shortlist?->email_notice_date) ?? ''}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @dump($remark->interview)
-                                    <div class="col-md-6 col-lg-6 mb-1" id="interviewEmailNoticeDate"
-                                        style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Email Notice Date</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control"
-                                                    name="interviewEmailNoticeDate" value="{{ old('interviewEmailNoticeDate', $remark->interview?->email_notice_date) ?? ''}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1">
-                                        <div class="row">
-                                            <label for="one"
-                                                class="col-sm-3 col-form-label fw-bold">Notice</label>
-                                            <div class="col-sm-9">
-                                                <select name="isNotice" class="form-control single-select-field" required disabled>
-                                                    <option value="" selected disabled>Select One</option>
-                                                    <option value="1" {{ old('isNotice') == 1 || $remark->isNotice ? 'selected' : '' }}>Yes</option>
-                                                    <option value="0" {{ old('isNotice') == 0 || $remark->isNotice ? 'selected' : '' }}>No</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="AssignToManager" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
-                                                <span class="text-danger">*</span> </label>
-                                            <div class="col-sm-9">
-                                                <select name="Assign_to_manager"
-                                                    class="form-control single-select-field" disabled>
-                                                    <option value="" selected disabled>Select One</option>
-                                                    @foreach ($users as $user)
-                                                        <option value="{{ $user->id }}" {{ old('Assign_to_manager') == $user->id || $remark->assign_to == $user->id ? 'selected' : '' }}>
-                                                            {{ $user->employee_name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="reassign" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
-                                                <span class="text-danger">*</span> </label>
-                                            <div class="col-sm-9">
-                                                <select name="Assign_to_manager"
-                                                    class="form-control single-select-field">
-                                                    <option value="" selected disabled>Select One</option>
-                                                    @foreach (\App\Models\Employee::select('id', 'employee_name')->where('roles_id', '!=', 1)->get() as $user)
-                                                        <option value="{{ $user->id }}" {{ old('Assign_to_manager') == $user->id || $candidate->Assign_to_manager == $user->id ? 'selected' : '' }}>
-                                                            {{ $user->employee_name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="clientArNo" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">AR
-                                                No</label>
-                                            <div class="col-sm-9">
-                                                <select name="client_ar_no" id=""
-                                                    class="form-control single-select-field">
-                                                    <option value="0">Select On</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistSalary" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Salary
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="shortlistSalary" value="{{ old('shortlistSalary', $remark->shortlist?->salary) }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistArNo" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">AR
-                                                No</label>
-                                            <div class="col-sm-9">
-                                                <select name="shortlistArNo"
-                                                    class="form-control single-select-field">
-                                                    <option value="">Select One</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistHourlyRate" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Hourly
-                                                Rate</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    name="shortlistHourlyRate" value="{{ old('shortlistHourlyRate') ?? $remark->shortlist?->hourly_rate }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistAdminFee" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Admin
-                                                Fee</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    name="shortlistAdminFee" value="{{ old('shortlistAdminFee') ?? $remark->shortlist?->admin_fee }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistStartDate" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Start Date
-                                                <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control"
-                                                    name="shortlistStartDate"  value="{{ old('shortlistStartDate') ?? $remark->shortlist?->start_date }}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistReminderPeriod" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Reminder
-                                                Period <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <select name="shortlistReminderPeriod"
-                                                    class="form-control single-select-field">
-                                                    <option value="1 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>1 Week Before</option>
-                                                    <option value="2 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>2 Week Before</option>
-                                                    <option value="3 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>3 Week Before</option>
-                                                    <option value="4 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>4 Week Before</option>
-                                                    <option value="5 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>5 Week Before</option>
-                                                    <option value="6 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>6 Week Before</option>
-                                                    <option value="7 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>7 Week Before</option>
-                                                    <option value="8 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : ''}}>8 Week Before</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistContractSigningTime"
-                                        style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Contract Signing Time <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <input type="time" class="form-control"
-                                                    name="shortlistContractSigningTime" value="{{old('shortlistContractSigningTime') ?? $remark->shortlist?->contact_signing_time}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistContractEndDate"
-                                        style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Contract End Time <span class="text-danger">*</span></label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control"
-                                                    name="shortlistContractEndDate" value="{{old('shortlistContractEndDate') ?? $remark->shortlist?->end_date}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistLastDay" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Last
-                                                Day</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control"
-                                                    name="shortlistLastDay" value="{{old('shortlistLastDay') ?? $remark->shortlist?->last_day}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistEmailNoticeTime"
-                                        style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Email Notice Time</label>
-                                            <div class="col-sm-9">
-                                                <input type="time" class="form-control"
-                                                    name="shortlistEmailNoticeTime"  value="{{old('shortlistEmailNoticeTime') ?? $remark->shortlist?->email_notice_time}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="AssignToTeamLeader" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
-                                                <span class="text-danger">*</span> </label>
-                                            <div class="col-sm-9">
-                                                <select name="team_leader" class="form-control single-select-field">
-                                                    <option value="">Select One</option>
-                                                    @foreach ($users as $user)
-                                                        <option value="{{ $user->id }}">
-                                                            {{ $user->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="AssignToRC" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
-                                                <span class="text-danger">*</span> </label>
-                                            <div class="col-sm-9">
-                                                <select name="rc" class="form-control single-select-field">
-                                                    <option value="">Select One</option>
-                                                    @foreach ($users as $user)
-                                                        <option value="{{ $user->id }}">
-                                                            {{ $user->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="interviewDate" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Date<span class="text-danger">*</span> </label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control" id="interview_date" name="interview_date" value="{{old('interview_date') ?? $remark->interview?->interview_date}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6  mb-1" id="interviewBy" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Interview
-                                                By</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="interview_by" value="{{old('interview_by') ?? $remark->interview?->interview_by}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="jobOfferSalary" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Jobs Offer
-                                                Salary</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" name="inteview_job_offer_salary"
-                                                    class="form-control" value="{{old('inteview_job_offer_salary', $remark->interview?->job_offer_salary)}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="attendInterview" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Attend
-                                                Interview</label>
-                                            <div class="col-sm-9">
-                                                <select name="attendInterview"
-                                                    class="form-control single-select-field">
-                                                    <option>Choose one</option>
-                                                    <option value="pending" {{ old('attendInterview', $remark->interview?->attend_interview) == 'pending' ? 'selected' : '' }}>Pending</option>
-                                                    <option value="yes" {{ old('attendInterview', $remark->interview?->attend_interview) == 'yes' ? 'selected' : '' }}>Yes</option>
-                                                    <option value="no" {{ old('attendInterview', $remark->interview?->attend_interview) == 'no' ? 'selected' : '' }}>No</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="availableDate" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Available
-                                                Date</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control" name="available_date" value="{{ old('available_date', $remark->interview?->available_date)}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="emailNoticeTime" style="display: none;">
-                                        <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Email
-                                                Notice
-                                                Time</label>
-                                            <div class="col-sm-9">
-                                                <input type="time" name="interviewEmailNoticeTime"
-                                                    class="form-control"  value="{{old('interviewEmailNoticeTime') ?? $remark->shortlist?->email_notice_time}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 mb-1">
-                                        <div class="row">
-                                            <label for="remarks" class="col-sm-12 col-md-1 col-form-label fw-bold">Remark</label>
-                                            <div class="col-sm-12 col-md-11">
-                                                <div class="d-flex flex-row-reverse description_textarea">
-                                                    <textarea name="remarks" id="ckeditor-classic" class="editor" rows="2"> {{ old('remarks', $remark->remarks ?? '') }} </textarea>
+                                <form action="{{ route('candidate.remark.update', $remark->id) }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <h5>Update Remarks</h5>
+                                        @dump($remark)
+                                        <p class="mb-0"><strong>Name:</strong> {{ $candidate->candidate_name }}</p>
+                                        <p><strong>NRIC:</strong> {{ $candidate->candidate_nric }}</p>
+                                        <div class="col-md-6 col-lg-6 mb-1">
+                                            <div class="row">
+                                                <input type="hidden" value="{{ $candidate->id }}" name="candidate_id">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Remark
+                                                    Type</label>
+                                                <div class="col-sm-9">
+                                                    <select name="remarkstype_id" class="form-control single-select-field"
+                                                        disabled id="remark_type">
+                                                        <option value="">Select One</option>
+                                                        @if ($auth->roles_id == 1)
+                                                            <option value="1"
+                                                                {{ old('remarkstype_id', $remark->remarkstype_id) == 1 ? 'selected' : '' }}>
+                                                                Assign To Manager</option>
+                                                        @endif
+                                                        @if ($auth->roles_id == 8)
+                                                            <option value="11"
+                                                                {{ old('remarkstype_id', $remark->remarkstype_id) == 11 ? 'selected' : '' }}>
+                                                                Assign To Own</option>
+                                                        @endif
+                                                        @if ($auth->roles_id == 4 || $auth->roles_id == 11)
+                                                            <option value="3"
+                                                                {{ old('remarkstype_id', $remark->remarkstype_id) == 3 ? 'selected' : '' }}>
+                                                                Assign To RC</option>
+                                                        @endif
+                                                        @if ($auth->roles_id == 4)
+                                                            <option value="2"
+                                                                {{ old('remarkstype_id', $remark->remarkstype_id) == 2 ? 'selected' : '' }}>
+                                                                Assign To Team Leader</option>
+                                                        @endif
+                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 11 || $auth->roles_id == 4)
+                                                            <option value="9"
+                                                                {{ old('remarkstype_id', $remark->remarkstype_id) == 9 ? 'selected' : '' }}>
+                                                                Reassign</option>
+                                                        @endif
+                                                        @if ($auth->roles_id == 1 || $auth->roles_id == 4)
+                                                            <option value="12"
+                                                                {{ old('remarkstype_id', $remark->remarkstype_id) == 12 ? 'selected' : '' }}>
+                                                                Share to Other Managers (Admin / Manager use only)</option>
+                                                        @endif
+                                                        <option value="4"
+                                                            {{ old('remarkstype_id', $remark->remarkstype_id) == 4 ? 'selected' : '' }}>
+                                                            Candidate Follow Up</option>
+                                                        <option value="5"
+                                                            {{ old('remarkstype_id', $remark->remarkstype_id) == 5 ? 'selected' : '' }}>
+                                                            Assign Interview</option>
+                                                        <option value="6"
+                                                            {{ old('remarkstype_id', $remark->remarkstype_id) == 6 ? 'selected' : '' }}>
+                                                            Assign To Client</option>
+                                                        <option value="7"
+                                                            {{ old('remarkstype_id', $remark->remarkstype_id) == 7 ? 'selected' : '' }}>
+                                                            Shortlisted</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="AssignToClient" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Client
+                                                </label>
+                                                <div class="col-sm-9">
+                                                    <select name="assign_client_id" id="assign_client_id"
+                                                        class="form-control single-select-field">
+                                                    <option value="">Choose One</option>
+                                                        @foreach ($clients as $client)
+                                                            <option value="{{ $client->id }}"
+                                                                {{ old('assign_client_id', $remark->assign_client?->client->id) == $client->id ? 'selected' : '' }}>
+                                                                {{ $client->client_name }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="interviewTime" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Interview
+                                                    Time</label>
+                                                <div class="col-sm-9">
+                                                    <input type="time" class="form-control" name="interview_time"
+                                                        value="{{ old('interview_time', $remark->interview?->interview_time) }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="interviewCompany"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Interview
+                                                    Company <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <select name="interview_company" id="interview_company"
+                                                        class="form-control single-select-field">
+                                                        <option value="">Select One</option>
+                                                        @foreach ($clients as $client)
+                                                            <option value="{{ $client->id }}"
+                                                                {{ old('interview_company', $remark->interview?->interview_company) == $client->id ? 'selected' : '' }}>
+                                                                {{ $client->client_name }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="expectedSalary"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Expected
+                                                    Salary</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="interview_expected_salary"
+                                                        value="{{ old('interview_expected_salary', $remark->interview?->expected_salary) }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="interviewPosition"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Interview
+                                                    Position <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" id="interview_position"
+                                                        name="interview_position"
+                                                        value="{{ old('interview_position', $remark->interview?->interview_position) }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="receivedJobOffer"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Received
+                                                    Job Offer</label>
+                                                <div class="col-sm-9">
+                                                    <select name="interview_received_job_offer"
+                                                        class="form-control single-select-field">
+                                                        <option value="pending"
+                                                            {{ old('interview_received_job_offer', $remark->interview?->receive_job_offer) == 'pending' ? 'selected' : '' }}>
+                                                            Pending</option>
+                                                        <option value="yes"
+                                                            {{ old('interview_received_job_offer', $remark->interview?->receive_job_offer) == 'yes' ? 'selected' : '' }}>
+                                                            Yes</option>
+                                                        <option value="no"
+                                                            {{ old('interview_received_job_offer', $remark->interview?->receive_job_offer) == 'no' ? 'selected' : '' }}>
+                                                            No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <input type="hidden" name="interview_id"
+                                            value="{{ $remark->interview?->id }}">
+                                        <input type="hidden" name="shortlist_id"
+                                            value="{{ $remark->shortlist?->id }}">
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistClientCompany"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Client
+                                                    Company <span class="text-danger">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <select name="client_company"
+                                                        class="form-control single-select-field">
+                                                        <option value="" selected disabled>Select One</option>
+                                                        @foreach ($clients as $client)
+                                                            <option value="{{ $client->id }}"
+                                                                {{ old('client_company') == $client->id || ($remark && $remark->client_company == $client->id) ? 'selected' : '' }}>
+                                                                {{ $client->client_name }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistDepartment"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one"
+                                                    class="col-sm-3 col-form-label fw-bold">Department</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="shortlistDepartment"
+                                                        value="{{ old('shortlistDepartment', isset($remark->shortlist?->depertment) ? $remark->shortlist?->depertment : '') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistPlacement"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Placement
+                                                    / Recruitment Fee </label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="shortlistPlacement"
+                                                        value="{{ old('shortlistPlacement', isset($remark->shortlist?->placement_recruitment_fee) ? $remark->shortlist?->placement_recruitment_fee : '') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistJobTitle"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Job Title
+                                                    <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="shortlistJobTitle"
+                                                        value="{{ old('shortlistJobTitle', isset($remark->shortlist?->job_title) ? $remark->shortlist?->job_title : '') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistJobType"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Job Type
+                                                    <span class="text-danger">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <select name="shortlistJobType"
+                                                        class="form-control single-select-field">
+                                                        <option value="" selected disabled>Select One</option>
+                                                        @foreach ($job_types as $type)
+                                                            <option value="{{ $type->id }}"
+                                                                {{ old('shortlistJobType', $remark->shortlist?->job_type) == $type->id ? 'selected' : '' }}>
+                                                                {{ $type->jobtype_code }} </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistProbationPeriod"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Probation
+                                                    Period</label>
+                                                <div class="col-sm-9">
+                                                    <select name="shortlistProbationPeriod"
+                                                        class="form-control single-select-field">
+                                                        <option>Select One</option>
+                                                        <option value="0"
+                                                            {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 0 ? 'selected' : '' }}>
+                                                            No Probation</option>
+                                                        <option value="1"
+                                                            {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 1 ? 'selected' : '' }}>
+                                                            1 Month</option>
+                                                        <option value="2"
+                                                            {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 2 ? 'selected' : '' }}>
+                                                            2 Months</option>
+                                                        <option value="3"
+                                                            {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 3 ? 'selected' : '' }}>
+                                                            3 Months</option>
+                                                        <option value="4"
+                                                            {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 4 ? 'selected' : '' }}>
+                                                            4 Months</option>
+                                                        <option value="5"
+                                                            {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 5 ? 'selected' : '' }}>
+                                                            5 Months</option>
+                                                        <option value="6"
+                                                            {{ (old('shortlistProbationPeriod') ?? $remark->shortlist?->probition_period) == 6 ? 'selected' : '' }}>
+                                                            6 Months</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistContractSigningDate"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Contract
+                                                    Signing
+                                                    Date <span class="text-danger"></span></label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control"
+                                                        name="shortlistContractSigningDate"
+                                                        value="{{ old('shortlistContractSigningDate', isset($remark->shortlist?->contact_signing_date) ? $remark->shortlist?->contact_signing_date : '') }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistEmailNoticeDate"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Email
+                                                    Notice Date</label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control"
+                                                        name="shortlistEmailNoticeDate"
+                                                        value="{{ old('shortlistEmailNoticeDate', $remark->shortlist?->email_notice_date) ?? '' }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="interviewEmailNoticeDate"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Email
+                                                    Notice Date</label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control"
+                                                        name="interviewEmailNoticeDate"
+                                                        value="{{ old('interviewEmailNoticeDate', $remark->interview?->email_notice_date) ?? '' }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1">
+                                            <div class="row">
+                                                <label for="one"
+                                                    class="col-sm-3 col-form-label fw-bold">Notice</label>
+                                                <div class="col-sm-9">
+                                                    <select name="isNotice" class="form-control single-select-field"
+                                                        required disabled>
+                                                        <option value="" selected disabled>Select One</option>
+                                                        <option value="1"
+                                                            {{ old('isNotice') == 1 || $remark->isNotice ? 'selected' : '' }}>
+                                                            Yes</option>
+                                                        <option value="0"
+                                                            {{ old('isNotice') == 0 || $remark->isNotice ? 'selected' : '' }}>
+                                                            No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="AssignToManager"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
+                                                    <span class="text-danger">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <select name="Assign_to_manager"
+                                                        class="form-control single-select-field">
+                                                        <option value="" disabled
+                                                            {{ old('Assign_to_manager', $remark->assign_to) == '' ? 'selected' : '' }}>
+                                                            Select One</option>
+                                                        @foreach ($users as $user)
+                                                            <option value="{{ $user->id }}"
+                                                                {{ old('Assign_to_manager', $remark->assign_to) == $user->id ? 'selected' : '' }}>
+                                                                {{ $user->employee_name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="reassign" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
+                                                    <span class="text-danger">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <select name="Assign_to_manager_r"
+                                                        class="form-control single-select-field">
+                                                        <option value="" selected disabled>Select One</option>
+                                                        @foreach (\App\Models\Employee::select('id', 'employee_name')->where('roles_id', '!=', 1)->get() as $user)
+                                                            <option value="{{ $user->id }}" {{ old('Assign_to_manager') == $user->id || $candidate->Assign_to_manager == $user->id ? 'selected' : '' }}>
+                                                                {{ $user->employee_name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="clientArNo" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">AR
+                                                    No</label>
+                                                <div class="col-sm-9">
+                                                    <select name="client_ar_no" id=""
+                                                        class="form-control single-select-field">
+                                                        <option value="0">Select On</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistSalary" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Salary
+                                                    <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="shortlistSalary" value="{{ old('shortlistSalary', $remark->shortlist?->salary) }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistArNo" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">AR
+                                                    No</label>
+                                                <div class="col-sm-9">
+                                                    <select name="shortlistArNo"
+                                                        class="form-control single-select-field">
+                                                        <option value="">Select One</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistHourlyRate" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Hourly
+                                                    Rate</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="shortlistHourlyRate" value="{{ old('shortlistHourlyRate') ?? $remark->shortlist?->hourly_rate }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistAdminFee" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Admin
+                                                    Fee</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control"
+                                                        name="shortlistAdminFee" value="{{ old('shortlistAdminFee') ?? $remark->shortlist?->admin_fee }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistStartDate" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Start Date
+                                                    <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control"
+                                                        name="shortlistStartDate"  value="{{ old('shortlistStartDate') ?? $remark->shortlist?->start_date }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistReminderPeriod" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Reminder
+                                                    Period <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <select name="shortlistReminderPeriod"
+                                                        class="form-control single-select-field">
+                                                        <option value="1 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>1 Week Before</option>
+                                                        <option value="2 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>2 Week Before</option>
+                                                        <option value="3 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>3 Week Before</option>
+                                                        <option value="4 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>4 Week Before</option>
+                                                        <option value="5 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>5 Week Before</option>
+                                                        <option value="6 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>6 Week Before</option>
+                                                        <option value="7 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>7 Week Before</option>
+                                                        <option value="8 Week Before" {{ $remark->shortlist?->reminder_period == '1 Week Before' ? 'selected' : '' }}>8 Week Before</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistContractSigningTime"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Contract Signing Time <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <input type="time" class="form-control"
+                                                        name="shortlistContractSigningTime" value="{{ old('shortlistContractSigningTime') ?? $remark->shortlist?->contact_signing_time }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistContractEndDate"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Contract End Time <span class="text-danger">*</span></label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control"
+                                                        name="shortlistContractEndDate" value="{{ old('shortlistContractEndDate') ?? $remark->shortlist?->end_date }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistLastDay" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Last
+                                                    Day</label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control"
+                                                        name="shortlistLastDay" value="{{ old('shortlistLastDay') ?? $remark->shortlist?->last_day }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="shortlistEmailNoticeTime"
+                                            style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Email Notice Time</label>
+                                                <div class="col-sm-9">
+                                                    <input type="time" class="form-control"
+                                                        name="shortlistEmailNoticeTime"  value="{{ old('shortlistEmailNoticeTime') ?? $remark->shortlist?->email_notice_time }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="AssignToTeamLeader" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
+                                                    <span class="text-danger">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <select name="team_leader" class="form-control single-select-field">
+                                                        <option value="">Select One</option>
+                                                        @foreach ($users as $user)
+                                                            <option value="{{ $user->id }}">
+                                                                {{ $user->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="AssignToRC" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Assign To
+                                                    <span class="text-danger">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <select name="rc" class="form-control single-select-field">
+                                                        <option value="">Select One</option>
+                                                        @foreach ($users as $user)
+                                                            <option value="{{ $user->id }}">
+                                                                {{ $user->name }}
+                                                            </option>
+                                                            @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="interviewDate" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Date<span class="text-danger">*</span> </label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control" id="interview_date" name="interview_date" value="{{ old('interview_date') ?? $remark->interview?->interview_date }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6  mb-1" id="interviewBy" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Interview
+                                                    By</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" class="form-control" name="interview_by" value="{{ old('interview_by') ?? $remark->interview?->interview_by }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="jobOfferSalary" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Jobs Offer
+                                                    Salary</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="inteview_job_offer_salary"
+                                                        class="form-control" value="{{ old('inteview_job_offer_salary', $remark->interview?->job_offer_salary) }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="attendInterview" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Attend
+                                                    Interview</label>
+                                                <div class="col-sm-9">
+                                                    <select name="attendInterview"
+                                                        class="form-control single-select-field">
+                                                        <option>Choose one</option>
+                                                        <option value="pending" {{ old('attendInterview', $remark->interview?->attend_interview) == 'pending' ? 'selected' : '' }}>Pending</option>
+                                                        <option value="yes" {{ old('attendInterview', $remark->interview?->attend_interview) == 'yes' ? 'selected' : '' }}>Yes</option>
+                                                        <option value="no" {{ old('attendInterview', $remark->interview?->attend_interview) == 'no' ? 'selected' : '' }}>No</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="availableDate" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Available
+                                                    Date</label>
+                                                <div class="col-sm-9">
+                                                    <input type="date" class="form-control" name="available_date" value="{{ old('available_date', $remark->interview?->available_date) }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 mb-1" id="emailNoticeTime" style="display: none;">
+                                            <div class="row">
+                                                <label for="one" class="col-sm-3 col-form-label fw-bold">Email
+                                                    Notice
+                                                    Time</label>
+                                                <div class="col-sm-9">
+                                                    <input type="time" name="interviewEmailNoticeTime"
+                                                        class="form-control"  value="{{ old('interviewEmailNoticeTime') ?? $remark->shortlist?->email_notice_time }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-1">
+                                            <div class="row">
+                                                <label for="remarks" class="col-sm-12 col-md-1 col-form-label fw-bold">Remark</label>
+                                                <div class="col-sm-12 col-md-11">
+                                                    <div class="d-flex flex-row-reverse description_textarea">
+                                                        <textarea name="remarks" id="ckeditor-classic" class="editor" rows="2"> {{ old('remarks', $remark->remarks ?? '') }} </textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-1">
+                                            <button type="submit" class="btn btn-success btn-sm">Update</button>
+                                        </div>
+                                    </div>
+                                </form>
                                 <div class="row">
                                     <div class="col-lg-12 mt-2">
                                         <table class="table table-bordered mb-0">
@@ -1835,21 +1926,21 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($client_remarks as $remark)
-                                                    <tr>
-                                                        <td>{{ $loop->index + 1 }}</td>
-                                                        <td>{{ $remark->Assign->name }}</td>
-                                                        <td>{{ $remark->remarksType->remarkstype_code }}</td>
-                                                        <td>{!! $remark->remarks !!}</td>
-                                                        <td>{{ $remark->Assign->name }}</td>
-                                                        <td>{{ $remark->created_at->format('H:i:s') }}
-                                                        </td>
-                                                        <td>{{ $remark->created_at->format('d-M-y') }}
-                                                        </td>
-                                                        <td style="display: flex;">
-                                                            <a href="{{ route('candidates.edit.remark', ['candidate' => $candidate->id, 'remark' => $remark->id]) }}" class="btn btn-info btn-sm me-3 {{ Auth::user()->id == $remark->created_by ? '' : 'disabled' }}">Edit</a>
-                                                        </td>
-                                                    </tr>
+                                                @foreach ($client_remarks as $remark)
+                                                <tr>
+                                                    <td>{{ $loop->index + 1 }}</td>
+                                                    <td>{{ $remark->assignTo->employee_name }}</td>
+                                                    <td>{{ $remark->remarksType->remarkstype_code }}</td>
+                                                    <td>{!! $remark->remarks !!}</td>
+                                                    <td>{{ $remark->Assign->name }}</td>
+                                                    <td>{{ $remark->created_at->format('H:i:s') }}
+                                                    </td>
+                                                    <td>{{ $remark->created_at->format('d-M-y') }}
+                                                    </td>
+                                                    <td style="display: flex;">
+                                                        <a href="{{ route('candidates.edit.remark', ['candidate' => $candidate->id, 'remark' => $remark->id]) }}" class="btn btn-info btn-sm me-3 {{ Auth::user()->id == $remark->created_by ? '' : 'disabled' }}">Edit</a>
+                                                    </td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -1922,8 +2013,7 @@
                                                             class="form-control single-select-field">
                                                             <option value="">Select One</option>
                                                             @foreach ($clients as $client)
-                                                                <option value="{{ $client->id }}">
-                                                                    {{ $client->client_name }} </option>
+                                                                <option value="{{ $client->id }}"> {{ $client->client_name }} </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -2240,7 +2330,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($payrolls as $payroll)
+                                                @foreach ($payrolls as $payroll)
                                                     <tr>
                                                         <td>{{ $loop->index + 1 }} </td>
                                                         <td>{{ $payroll->salary }} </td>
@@ -2252,14 +2342,12 @@
                                                         </td>
                                                         <td>
                                                             @if (App\Helpers\FileHelper::usr()->can('candidate.payroll.delete'))
-                                                                <form
-                                                                    action="{{ route('candidate.payroll.delete', $payroll->id) }}"
-                                                                    method="POST">
+                                                                <form action="{{ route('candidate.payroll.delete', $payroll->id) }}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                     <button class="btn btn-danger btn-sm"
                                                                         onclick="return confirm('Are you sure you want to delete this item?')"
-                                                                        type="submit">Delete</button>
+                                                                            type="submit">Delete</button>
                                                                 </form>
                                                             @endif
                                                         </td>
@@ -2272,355 +2360,384 @@
                             </div>
 
                             <div class="tab-pane" id="working_hour" role="tabpanel">
-                                <h5>Create Time Sheet</h5>
-                                <form action="{{ route('candidate.working.hour', $candidate->id) }}" method="POST">
-                                    @csrf
+                                                        <h5>Create Time Sheet</h5>
+                                                        <form
+                                                        action="{{ route('candidate.working.hour', $candidate->id) }}"
+                                                        method="POST">
+                                                        @csrf
 
-                                    <div class="row mb-5">
-                                        <div class="col-lg-6">
-                                            <div class="mt-5 mt-lg-4 mt-xl-0">
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-3 col-form-label">Time Sheet
+                                                        <div class="row mb-5">
+                                                        <div class="col-lg-6">
+                                                        <div class="mt-5 mt-lg-4 mt-xl-0">
+                                                        <div class="row mb-4">
+                                                        <label for="one" class="col-sm-3 col-form-label">Time
+                                                        Sheet
                                                         Type</label>
-                                                    <input type="hidden" name="candidate_id"
+                                                        <input type="hidden" name="candidate_id"
                                                         value="{{ $candidate->id }}">
-                                                    <div class="col-sm-9">
+                                                        <div class="col-sm-9">
                                                         <select name="timesheet_id" id="sheet_type_id"
-                                                            class="form-control single-select-field">
-                                                            <option value="">Select One</option>
-                                                            @foreach ($time_sheet as $sheet)
-                                                                <option value="{{ $sheet->id }}"
-                                                                    {{ $time?->timesheet_id == $sheet->id ? 'selected' : '' }}>
-                                                                    {{ $sheet->title }}</option>
-                                                            @endforeach
+                                                        class="form-control single-select-field">
+                                                        <option value="">Select One</option>
+                                                        @foreach ($time_sheet as $sheet)
+                                                        <option value="{{ $sheet->id }}"
+                                                        {{ $time?->timesheet_id == $sheet->id ? 'selected' : '' }}>
+                                                        {{ $sheet->title }}</option>
+                                                        @endforeach
                                                         </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-3 col-form-label">Schedule
+                                                        </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                        <label for="one"
+                                                        class="col-sm-3 col-form-label">Schedule
                                                         Type</label>
-                                                    <div class="col-sm-9">
+                                                        <div class="col-sm-9">
                                                         <select name="schedul_type" id=""
-                                                            class="form-control single-select-field">
-                                                            <option value="">Select One</option>
-                                                            <option value="Month End"
-                                                                {{ $time?->schedul_type == 'Month End' ? 'selected' : '' }}>
-                                                                Month End</option>
-                                                            <option value="44 Hours"
-                                                                {{ $time?->schedul_type == '44 Hours' ? 'selected' : '' }}>
-                                                                44 Hours</option>
+                                                        class="form-control single-select-field">
+                                                        <option value="">Select One</option>
+                                                        <option value="Month End"
+                                                        {{ $time?->schedul_type == 'Month End' ? 'selected' : '' }}>
+                                                        Month End</option>
+                                                        <option value="44 Hours"
+                                                        {{ $time?->schedul_type == '44 Hours' ? 'selected' : '' }}>
+                                                        44 Hours</option>
                                                         </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="one" class="col-sm-3 col-form-label">Schedule
+                                                        </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                        <label for="one"
+                                                        class="col-sm-3 col-form-label">Schedule
                                                         Day</label>
-                                                    <div class="col-sm-9">
+                                                        <div class="col-sm-9">
                                                         <select name="schedul_day" id=""
-                                                            class="form-control single-select-field">
-                                                            <option value="">Select One</option>
-                                                            @for ($i = 0; $i < 32; $i++)
-                                                                <option value="{{ $i }}"
-                                                                    {{ $i == $time?->schedul_day ? 'selected' : '' }}>
-                                                                    {{ $i }}</option>
-                                                            @endfor
+                                                        class="form-control single-select-field">
+                                                        <option value="">Select One</option>
+                                                        @for ($i = 0; $i < 32; $i++)
+                                                        <option value="{{ $i }}"
+                                                        {{ $i == $time?->schedul_day ? 'selected' : '' }}>
+                                                        {{ $i }}</option>
+                                                        @endfor
                                                         </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row mb-4">
-                                                    <label for="one"
+                                                        </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                        <label for="one"
                                                         class="col-sm-3 col-form-label">Remarks</label>
-                                                    <div class="col-sm-9">
+                                                        <div class="col-sm-9">
                                                         <textarea name="remarks" rows="2" class="form-control" placeholder="Remarks"> {{ $time?->remarks }} </textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <h5 class="mb-5">Days Setting</h5>
-                                            <div class="form-group">
-                                                <label style="width: 9%;" for="package_day"
-                                                    class="col-sm-1 control-label">Day</label>
-                                                <label style="width: 25%;" for="package_day"
-                                                    class="col-sm-1 control-label">Time In</label>
-                                                <label style="width: 25%;" for="package_day"
-                                                    class="col-sm-1 control-label">Time Out</label>
-                                                <label style="width: 16%;" for="package_day"
-                                                    class="col-sm-1 control-label">Lunch Hour</label>
-                                                <label style="width: 9%;" for="package_day"
-                                                    class="col-sm-1 control-label">Work</label>
-                                                <!-- Add labels for other days as needed -->
-                                            </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        <div class="row">
+                                                        <div class="col-lg-12">
+                                                        <h5 class="mb-5">Days Setting</h5>
+                                                        <div class="form-group">
+                                                        <label style="width: 9%;" for="package_day"
+                                                        class="col-sm-1 control-label">Day</label>
+                                                        <label style="width: 25%;" for="package_day"
+                                                        class="col-sm-1 control-label">Time In</label>
+                                                        <label style="width: 25%;" for="package_day"
+                                                        class="col-sm-1 control-label">Time Out</label>
+                                                        <label style="width: 16%;" for="package_day"
+                                                        class="col-sm-1 control-label">Lunch Hour</label>
+                                                        <label style="width: 9%;" for="package_day"
+                                                        class="col-sm-1 control-label">Work</label>
+                                                        <!-- Add labels for other days as needed -->
+                                                        </div>
 
-                                            {{-- @php
+                                                        {{-- @php
                                                 $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                                             @endphp --}}
 
-                                            <div id="timeSheetEntries">
+                                                        <div id="timeSheetEntries">
 
-                                            </div>
-                                            {{-- @foreach ($days as $day) --}}
+                                                        </div>
+                                                        {{-- @foreach ($days as $day) --}}
 
-                                            {{-- @endforeach --}}
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <button type="submit" class="btn btn-sm btn-info mt-3">Save</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end card-body -->
-                    <!--  Create modal example -->
-                    <div class="modal fade bs-example-modal-lg-create" tabindex="-1" role="dialog"
-                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="myLargeModalLabel">Upload File</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
+                                                        {{-- @endforeach --}}
+                                                        </div>
+                                                        </div>
+                                                        <div class="row">
+                                                        <div class="col-lg-12">
+                                                        <button type="submit"
+                                                        class="btn btn-sm btn-info mt-3">Save</button>
+                                                        </div>
+                                                        </div>
+                                                        </form>
+                                                        </div>
+                                                        </div>
+                                                        </div>
+                                                        <!-- end card-body -->
+                                                        <!-- Create modal example -->
+                                                        <div class="modal fade bs-example-modal-lg-create"
+                                                        tabindex="-1" role="dialog"
+                                                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="myLargeModalLabel">Upload
+                                                        File</h5>
+                                                        <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
 
-                                    <form action="{{ route('candidate.file.upload', $candidate->id) }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="hidden" name="file_type_for" value="1"
-                                            class="form-control">
-                                        <div class="mt-5 mt-lg-4 mt-xl-0">
-                                            <div class="row mb-1">
-                                                <label for="file_path" class="col-sm-3 col-form-label">Upload
-                                                    File</label>
-                                                <div class="col-sm-9">
-                                                    <input type="file" name="file_path" class="form-control">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-1">
-                                                <label for="twente_four" class="col-sm-3 col-form-label">File
-                                                    Type</label>
-                                                <div class="col-sm-9">
-                                                    <select name="file_type_id"
+                                                        <form
+                                                        action="{{ route('candidate.file.upload', $candidate->id) }}"
+                                                        method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" name="file_type_for" value="1"
+                                                        class="form-control">
+                                                        <div class="mt-5 mt-lg-4 mt-xl-0">
+                                                        <div class="row mb-1">
+                                                        <label for="file_path"
+                                                        class="col-sm-3 col-form-label">Upload
+                                                        File</label>
+                                                        <div class="col-sm-9">
+                                                        <input type="file" name="file_path"
+                                                        class="form-control">
+                                                        </div>
+                                                        </div>
+                                                        <div class="row mb-1">
+                                                        <label for="twente_four"
+                                                        class="col-sm-3 col-form-label">File
+                                                        Type</label>
+                                                        <div class="col-sm-9">
+                                                        <select name="file_type_id"
                                                         class="form-control single-select-field">
                                                         <option value="">Select One</option>
                                                         @foreach ($fileTypes as $file)
-                                                            <option value="{{ $file->id }}">
-                                                                {{ $file->uploadfiletype_code }}</option>
+                                                        <option value="{{ $file->id }}">
+                                                        {{ $file->uploadfiletype_code }}</option>
                                                         @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-sm btn-info w-md">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-                    <div class="modal fade bs-example-modal-lg-create-resume" tabindex="-1" role="dialog"
-                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="myLargeModalLabel">Upload Resume</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
+                                                        </select>
+                                                        </div>
+                                                        </div>
+                                                        <button type="submit"
+                                                        class="btn btn-sm btn-info w-md">Submit</button>
+                                                        </div>
+                                                        </form>
+                                                        </div>
+                                                        </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                        </div><!-- /.modal -->
+                                                        <div class="modal fade bs-example-modal-lg-create-resume"
+                                                        tabindex="-1" role="dialog"
+                                                        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="myLargeModalLabel">Upload
+                                                        Resume</h5>
+                                                        <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
 
-                                    <form action="{{ route('candidate.resume', $candidate->id) }}" method="POST"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="hidden" name="candidate_id" value="{{ $candidate->id }}"
-                                            class="form-control">
-                                        <div class="mt-5 mt-lg-4 mt-xl-0">
-                                            <div class="row mb-4">
-                                                <label for="resume_name" class="col-sm-3 col-form-label">Resume
-                                                    Name</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" name="resume_name" class="form-control"
-                                                        value="{{ old('resume_name') }}">
-                                                </div>
-                                            </div>
-                                            <div class="row mb-4">
-                                                <label for="resume_file_path" class="col-sm-3 col-form-label">Upload
-                                                    File</label>
-                                                <div class="col-sm-9">
-                                                    <input type="file" name="resume_file_path"
+                                                        <form
+                                                        action="{{ route('candidate.resume', $candidate->id) }}"
+                                                        method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                        <input type="hidden" name="candidate_id"
+                                                        value="{{ $candidate->id }}"
                                                         class="form-control">
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-sm btn-info w-md">Submit</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-                    <!--  Edit modal example -->
-                </div><!-- end card -->
-            </div>
-        </div>
+                                                        <div class="mt-5 mt-lg-4 mt-xl-0">
+                                                        <div class="row mb-4">
+                                                        <label for="resume_name"
+                                                        class="col-sm-3 col-form-label">Resume
+                                                        Name</label>
+                                                        <div class="col-sm-9">
+                                                        <input type="text" name="resume_name"
+                                                        class="form-control"
+                                                        value="{{ old('resume_name') }}">
+                                                        </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                        <label for="resume_file_path"
+                                                        class="col-sm-3 col-form-label">Upload
+                                                        File</label>
+                                                        <div class="col-sm-9">
+                                                        <input type="file" name="resume_file_path"
+                                                        class="form-control">
+                                                        </div>
+                                                        </div>
+                                                        <button type="submit"
+                                                        class="btn btn-sm btn-info w-md">Submit</button>
+                                                        </div>
+                                                        </form>
+                                                        </div>
+                                                        </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                        </div><!-- /.modal -->
+                                                        <!-- Edit modal example -->
+                                                        </div><!-- end card -->
+                                                        </div>
+                                                        </div>
 
-        {{-- @include('admin.candidate.inc.timesheet') --}}
-    @endsection
+                                                        {{-- @include('admin.candidate.inc.timesheet') --}}
+                                                    @endsection
 
-    @section('scripts')
-        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-            crossorigin="anonymous"></script>
-        @include('admin.include.select2js')
-        <!-- ckeditor -->
-        <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
-        <!-- init js -->
-        <script src="{{ URL::asset('build/js/pages/form-editor.init.js') }}"></script>
+                                                    @section('scripts')
+                                                        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+                                                            crossorigin="anonymous"></script>
+                                                        @include('admin.include.select2js')
+                                                        <!-- ckeditor -->
+                                                        <script src="{{ URL::asset('build/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') }}"></script>
+                                                        <!-- init js -->
+                                                        <script src="{{ URL::asset('build/js/pages/form-editor.init.js') }}"></script>
 
-        <script language="javascript" type="text/javascript">
-            if (window.location.hash) {
-                var hash = window.location.hash;
-                console.log(hash);
-                document.querySelector('[href="' + hash + '"]').click();
-            }
+                                                        <script language="javascript" type="text/javascript">
+                                                            if (window.location.hash) {
+                                                                var hash = window.location.hash;
+                                                                console.log(hash);
+                                                                document.querySelector('[href="' + hash + '"]').click();
+                                                            }
 
-            window.addEventListener('DOMContentLoaded', (event) => {
-                let remarkTab = document.querySelector('#remark-tab');
-                if (remarkTab) {
-                    remarkTab.click();
-                }
-            });
+                                                            window.addEventListener('DOMContentLoaded', (event) => {
+                                                                let remarkTab = document.querySelector('#remark-tab');
+                                                                if (remarkTab) {
+                                                                    remarkTab.click();
+                                                                }
+                                                            });
 
-            $(document).ready(function() {
-                $('body').on('change','#remark_type',function () {
-                    var selectedValue = $(this).val();
+                                                            $(document).ready(function() {
+                                                                $('body').on('change', '#remark_type', function() {
+                                                                    let selectedValue = $(this).val();
+                                                                    console.log(selectedValue);
 
-                    if (selectedValue === '9') {
-                        $('#reassign').show();
-                    } else {
-                        $('#reassign').hide();
-                    }
-                    if (selectedValue === '12' || selectedValue === '1') {
-                        $('#AssignToManager').show();
-                    } else {
-                        $('#AssignToManager').hide();
-                    }
+                                                                    if (selectedValue === '9') {
+                                                                        $('#reassign').show();
+                                                                    } else {
+                                                                        $('#reassign').hide();
+                                                                    }
+                                                                    if (selectedValue === '12' || selectedValue === '1') {
+                                                                        $('#AssignToManager').show();
+                                                                    } else {
+                                                                        $('#AssignToManager').hide();
+                                                                    }
 
-                    if (selectedValue === '2') {
-                        $('#AssignToTeamLeader').show().css('display', 'show');
-                    } else {
-                        $('#AssignToTeamLeader').hide().css('display', 'none');
-                    }
+                                                                    if (selectedValue === '2') {
+                                                                        $('#AssignToTeamLeader').show().css('display', 'show');
+                                                                    } else {
+                                                                        $('#AssignToTeamLeader').hide().css('display', 'none');
+                                                                    }
 
-                    if (selectedValue === '3') {
-                        $('#AssignToRC').show().css('display', 'show');
-                    } else {
-                        $('#AssignToRC').hide().css('display', 'none');
-                    }
+                                                                    if (selectedValue === '3') {
+                                                                        $('#AssignToRC').show().css('display', 'show');
+                                                                    } else {
+                                                                        $('#AssignToRC').hide().css('display', 'none');
+                                                                    }
 
-                    if (selectedValue === '5') {
-                        $('#interviewTime').show().css('display', 'show');
-                        $('#interviewCompany').show().css('display', 'show');
-                        $('#interview_company').prop('required', true);
-                        $('#expectedSalary').show().css('display', 'show');
-                        $('#interviewPosition').show().css('display', 'show');
-                        $('#interview_position').prop('required', true);
-                        $('#receivedJobOffer').show().css('display', 'show');
-                        $('#emailNoticeDate').show().css('display', 'show');
-                        $('#interviewDate').show().css('display', 'show');
-                        $('#interview_date').prop('required', true);
-                        $('#interviewBy').show().css('display', 'show');
-                        $('#jobOfferSalary').show().css('display', 'show');
-                        $('#attendInterview').show().css('display', 'show');
-                        $('#availableDate').show().css('display', 'show');
-                        $('#interviewEmailNoticeDate').show().css('display', 'show');
-                    } else {
-                        $('#interviewTime').hide().css('display', 'none');
-                        $('#interviewCompany').hide().css('display', 'none');
-                        $('#interview_company').prop('required', false);
-                        $('#expectedSalary').hide().css('display', 'none');
-                        $('#interviewPosition').hide().css('display', 'none');
-                        $('#interview_position').prop('required', false);
-                        $('#receivedJobOffer').hide().css('display', 'none');
-                        $('#emailNoticeDate').hide().css('display', 'none');
-                        $('#interviewDate').hide().css('display', 'none');
-                        $('#interview_date').prop('required', false);
-                        $('#interviewBy').hide().css('display', 'none');
-                        $('#jobOfferSalary').hide().css('display', 'none');
-                        $('#attendInterview').hide().css('display', 'none');
-                        $('#availableDate').hide().css('display', 'none');
-                        $('#interviewEmailNoticeDate').hide().css('display', 'none');
-                    }
+                                                                    if (selectedValue === '5') {
+                                                                        $('#interviewTime').show().css('display', 'show');
+                                                                        $('#interviewCompany').show().css('display', 'show');
+                                                                        $('#interview_company').prop('required', true);
+                                                                        $('#expectedSalary').show().css('display', 'show');
+                                                                        $('#interviewPosition').show().css('display', 'show');
+                                                                        $('#interview_position').prop('required', true);
+                                                                        $('#receivedJobOffer').show().css('display', 'show');
+                                                                        $('#emailNoticeDate').show().css('display', 'show');
+                                                                        $('#interviewDate').show().css('display', 'show');
+                                                                        $('#interview_date').prop('required', true);
+                                                                        $('#interviewBy').show().css('display', 'show');
+                                                                        $('#jobOfferSalary').show().css('display', 'show');
+                                                                        $('#attendInterview').show().css('display', 'show');
+                                                                        $('#availableDate').show().css('display', 'show');
+                                                                        $('#interviewEmailNoticeDate').show().css('display', 'show');
+                                                                    } else {
+                                                                        $('#interviewTime').hide().css('display', 'none');
+                                                                        $('#interviewCompany').hide().css('display', 'none');
+                                                                        $('#interview_company').prop('required', false);
+                                                                        $('#expectedSalary').hide().css('display', 'none');
+                                                                        $('#interviewPosition').hide().css('display', 'none');
+                                                                        $('#interview_position').prop('required', false);
+                                                                        $('#receivedJobOffer').hide().css('display', 'none');
+                                                                        $('#emailNoticeDate').hide().css('display', 'none');
+                                                                        $('#interviewDate').hide().css('display', 'none');
+                                                                        $('#interview_date').prop('required', false);
+                                                                        $('#interviewBy').hide().css('display', 'none');
+                                                                        $('#jobOfferSalary').hide().css('display', 'none');
+                                                                        $('#attendInterview').hide().css('display', 'none');
+                                                                        $('#availableDate').hide().css('display', 'none');
+                                                                        $('#interviewEmailNoticeDate').hide().css('display', 'none');
+                                                                    }
 
                     if (selectedValue === '6') {
                         $('#AssignToClient').show().css('display', 'show');
                         $('#clientArNo').show().css('display', 'show');
+                        $('#assign_client_id').prop('required', true);
                     } else {
                         $('#AssignToClient').hide().css('display', 'none');
                         $('#clientArNo').hide().css('display', 'none');
+                        $('#assign_client_id').prop('required', false);
                     }
 
-                    if (selectedValue === '7') {
-                        $('#shortlistClientCompany').show().css('display', 'show');
-                        $('#shortlistDepartment').show().css('display', 'show');
-                        $('#shortlistPlacement').show().css('display', 'show');
-                        $('#shortlistJobTitle').show().css('display', 'show');
-                        $('#shortlistJobType').show().css('display', 'show');
-                        $('#shortlistProbationPeriod').show().css('display', 'show');
-                        $('#shortlistContractSigningDate').show().css('display', 'show');
-                        $('#shortlistEmailNoticeDate').show().css('display', 'show');
-                        $('#shortlistSalary').show().css('display', 'show');
-                        $('#shortlistArNo').show().css('display', 'show');
-                        $('#shortlistHourlyRate').show().css('display', 'show');
-                        $('#shortlistAdminFee').show().css('display', 'show');
-                        $('#shortlistStartDate').show().css('display', 'show');
-                        $('#shortlistReminderPeriod').show().css('display', 'show');
-                        $('#shortlistContractSigningTime').show().css('display', 'show');
-                        $('#shortlistLastDay').show().css('display', 'show');
-                        $('#shortlistEmailNoticeTime').show().css('display', 'show');
-                        $('#shortlistContractEndDate').show().css('display', 'show');
-                    } else {
-                        $('#shortlistClientCompany').hide().css('display', 'none');
-                        $('#shortlistDepartment').hide().css('display', 'none');
-                        $('#shortlistPlacement').hide().css('display', 'none');
-                        $('#shortlistJobTitle').show().css('display', 'none');
-                        $('#shortlistJobType').hide().css('display', 'none');
-                        $('#shortlistProbationPeriod').hide().css('display', 'none');
-                        $('#shortlistContractSigningDate').hide().css('display', 'none');
-                        $('#shortlistEmailNoticeDate').hide().css('display', 'none');
-                        $('#shortlistSalary').hide().css('display', 'none');
-                        $('#shortlistArNo').hide().css('display', 'none');
-                        $('#shortlistHourlyRate').hide().css('display', 'none');
-                        $('#shortlistAdminFee').hide().css('display', 'none');
-                        $('#shortlistStartDate').hide().css('display', 'none');
-                        $('#testone').hide().css('display', 'none');
-                        $('#shortlistReminderPeriod').hide().css('display', 'none');
-                        $('#shortlistContractSigningTime').hide().css('display', 'none');
-                        $('#shortlistLastDay').hide().css('display', 'none');
-                        $('#shortlistEmailNoticeTime').hide().css('display', 'none');
-                        $('#shortlistContractEndDate').hide().css('display', 'none');
-                    }
-                });
+                                                                    if (selectedValue === '7') {
+                                                                        $('#shortlistClientCompany').show().css('display', 'show');
+                                                                        $('#shortlistDepartment').show().css('display', 'show');
+                                                                        $('#shortlistPlacement').show().css('display', 'show');
+                                                                        $('#shortlistJobTitle').show().css('display', 'show');
+                                                                        $('#shortlistJobType').show().css('display', 'show');
+                                                                        $('#shortlistProbationPeriod').show().css('display', 'show');
+                                                                        $('#shortlistContractSigningDate').show().css('display', 'show');
+                                                                        $('#shortlistEmailNoticeDate').show().css('display', 'show');
+                                                                        $('#shortlistSalary').show().css('display', 'show');
+                                                                        $('#shortlistArNo').show().css('display', 'show');
+                                                                        $('#shortlistHourlyRate').show().css('display', 'show');
+                                                                        $('#shortlistAdminFee').show().css('display', 'show');
+                                                                        $('#shortlistStartDate').show().css('display', 'show');
+                                                                        $('#shortlistReminderPeriod').show().css('display', 'show');
+                                                                        $('#shortlistContractSigningTime').show().css('display', 'show');
+                                                                        $('#shortlistLastDay').show().css('display', 'show');
+                                                                        $('#shortlistEmailNoticeTime').show().css('display', 'show');
+                                                                        $('#shortlistContractEndDate').show().css('display', 'show');
+                                                                    } else {
+                                                                        $('#shortlistClientCompany').hide().css('display', 'none');
+                                                                        $('#shortlistDepartment').hide().css('display', 'none');
+                                                                        $('#shortlistPlacement').hide().css('display', 'none');
+                                                                        $('#shortlistJobTitle').show().css('display', 'none');
+                                                                        $('#shortlistJobType').hide().css('display', 'none');
+                                                                        $('#shortlistProbationPeriod').hide().css('display', 'none');
+                                                                        $('#shortlistContractSigningDate').hide().css('display', 'none');
+                                                                        $('#shortlistEmailNoticeDate').hide().css('display', 'none');
+                                                                        $('#shortlistSalary').hide().css('display', 'none');
+                                                                        $('#shortlistArNo').hide().css('display', 'none');
+                                                                        $('#shortlistHourlyRate').hide().css('display', 'none');
+                                                                        $('#shortlistAdminFee').hide().css('display', 'none');
+                                                                        $('#shortlistStartDate').hide().css('display', 'none');
+                                                                        $('#testone').hide().css('display', 'none');
+                                                                        $('#shortlistReminderPeriod').hide().css('display', 'none');
+                                                                        $('#shortlistContractSigningTime').hide().css('display', 'none');
+                                                                        $('#shortlistLastDay').hide().css('display', 'none');
+                                                                        $('#shortlistEmailNoticeTime').hide().css('display', 'none');
+                                                                        $('#shortlistContractEndDate').hide().css('display', 'none');
+                                                                    }
+                                                                });
+                                                                $('#remark_type').trigger();
 
-                function loadTimeSheetDetails(timesheetId) {
-                    let html = '';
+                                                                function loadTimeSheetDetails(timesheetId) {
+                                                                    let html = '';
 
-                    $.ajax({
-                        url: '/ATS/time/sheet/details/' + timesheetId,
-                        method: 'GET',
-                        success: function(response) {
-                            let entries = response.entries;
-                            entries = JSON.parse(entries);
+                                                                    $.ajax({
+                                                                        url: '/ATS/time/sheet/details/' + timesheetId,
+                                                                        method: 'GET',
+                                                                        success: function(response) {
+                                                                            let entries = response.entries;
+                                                                            entries = JSON.parse(entries);
 
-                            Object.values(entries).forEach(entry => {
-                                let isWorkChecked = entry.isWork === "1" ? 'checked' : '';
-                                let inTime = entry.in_time ? entry.in_time.substring(0, 5) : '';
-                                let outTime = entry.out_time ? entry.out_time.substring(0, 5) : '';
-                                let lunch_time = entry.lunch_time;
+                                                                            Object.values(entries).forEach(entry => {
+                                                                                let isWorkChecked = entry.isWork === "1" ? 'checked' : '';
+                                                                                let inTime = entry.in_time ? entry.in_time.substring(0, 5) : '';
+                                                                                let outTime = entry.out_time ? entry.out_time.substring(0, 5) : '';
+                                                                                let lunch_time = entry.lunch_time;
 
-                                html += `
+                                                                                html += `
                                     <div class="form-group">
                                         <div class="row mt-3">
                                             <label for="time_sheet_day" class="col-sm-1 control-label">${entry.day}</label>
@@ -2648,52 +2765,52 @@
                                         </div>
                                     </div>
                                 `;
-                            });
+                                                                            });
 
-                            $('#timeSheetEntries').html(html);
-                        },
-                        error: function(xhr, status, error) {
-                            console.error(error);
-                        }
-                    });
-                }
+                                                                            $('#timeSheetEntries').html(html);
+                                                                        },
+                                                                        error: function(xhr, status, error) {
+                                                                            console.error(error);
+                                                                        }
+                                                                    });
+                                                                }
 
-                loadTimeSheetDetails($('#sheet_type_id').val());
+                                                                loadTimeSheetDetails($('#sheet_type_id').val());
 
-                $('#sheet_type_id').change(function() {
-                    let timesheetId = $(this).val();
-                    loadTimeSheetDetails(timesheetId);
-                });
-            });
+                                                                $('#sheet_type_id').change(function() {
+                                                                    let timesheetId = $(this).val();
+                                                                    loadTimeSheetDetails(timesheetId);
+                                                                });
+                                                            });
 
-            $(document).ready(function() {
-                $('.isMainRadio').on('change', function() {
-                    // Get the candidate ID from the data attribute
-                    var resumeId = $(this).data('resume-id');
-                    var candidateId = $(this).data('candidate-id');
+                                                            $(document).ready(function() {
+                                                                $('.isMainRadio').on('change', function() {
+                                                                    // Get the candidate ID from the data attribute
+                                                                    var resumeId = $(this).data('resume-id');
+                                                                    var candidateId = $(this).data('candidate-id');
 
-                    $.ajax({
-                        type: 'POST',
-                        url: '/ATS/candidate/resume/update/' + candidateId,
-                        data: {
-                            resumeId: resumeId,
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            console.log(response);
-                        },
-                        error: function(error) {
-                            console.error('Ajax request failed:', error);
-                        }
-                    });
-                });
-            });
-        </script>
-        @include('admin.candidate.inc.teamjs');
-        <script src="{{ asset('build/js/ajax/candidateDeclaration.js') }}"></script>
-        {{-- <script src="{{ asset('build/js/ajax/candidate/genaral.js') }}"></script> --}}
-        <script src="{{ asset('build/js/ajax/candidateRemark.js') }}"></script>
-        <script src="{{ asset('build/js/ajax/candidatePayroll.js') }}"></script>
-        <script src="{{ asset('build/js/ajax/imagePreview.js') }}"></script>
-        {{-- <script src="{{ asset('build/js/ajax/candidateTimeSheetGet.js') }}"></script> --}}
-    @endsection
+                                                                    $.ajax({
+                                                                        type: 'POST',
+                                                                        url: '/ATS/candidate/resume/update/' + candidateId,
+                                                                        data: {
+                                                                            resumeId: resumeId,
+                                                                            _token: '{{ csrf_token() }}'
+                                                                        },
+                                                                        success: function(response) {
+                                                                            console.log(response);
+                                                                        },
+                                                                        error: function(error) {
+                                                                            console.error('Ajax request failed:', error);
+                                                                        }
+                                                                    });
+                                                                });
+                                                            });
+                                                        </script>
+                                                        @include('admin.candidate.inc.teamjs');
+                                                        <script src="{{ asset('build/js/ajax/candidateDeclaration.js') }}"></script>
+                                                        {{-- <script src="{{ asset('build/js/ajax/candidate/genaral.js') }}"></script> --}}
+                                                        <script src="{{ asset('build/js/ajax/candidateRemark.js') }}"></script>
+                                                        <script src="{{ asset('build/js/ajax/candidatePayroll.js') }}"></script>
+                                                        <script src="{{ asset('build/js/ajax/imagePreview.js') }}"></script>
+                                                        {{-- <script src="{{ asset('build/js/ajax/candidateTimeSheetGet.js') }}"></script> --}}
+                                                    @endsection

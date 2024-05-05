@@ -317,10 +317,10 @@
                                                         </div>
                                                     </div>
                                                     <div class="row mb-1">
-                                                        <label for="twente_four" class="col-sm-3 col-form-label">File
-                                                            Type</label>
+                                                        <label for="twente_four" class="col-sm-3 col-form-label">File Type</label>
                                                         <div class="col-sm-9">
                                                             <select name="file_type_id" id="" class="form-control single-select-field">
+                                                                <option value="">Choose One</option>
                                                                 @foreach ($data['fileTypes'] as $file)
                                                                     <option value="{{ old('file_type_id', $file->id) }}">
                                                                         {{ $file->uploadfiletype_code }}</option>

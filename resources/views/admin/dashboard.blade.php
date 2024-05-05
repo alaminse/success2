@@ -613,7 +613,7 @@
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row {{ $candidate['remark_id'] == 8 ? 'text-danger' : '' }}">
-                                                                 @if ($auth->roles_id == 4 || $auth->roles_id == 11)
+                                                                @if ($auth->roles_id == 4 || $auth->roles_id == 11)
                                                                     @include('admin.dashboard.inc.select')
                                                                 @endif
                                                                 <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
@@ -911,7 +911,6 @@
                             <div class="card-body">
                                 <div class="accordion accordion-twobusinessdayclients" id="twobusinessdayclients">
                                     <div class="accordion-item p-2">
-                                        {{-- {{ $loop->index }} --}}
                                         <h2 class="accordion-header" id="twobusinessdayclients-heading">
                                             <button class="accordion-button fw-medium collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#twobusinessdayclients-collapse"

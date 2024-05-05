@@ -30,60 +30,17 @@
 
         <!--- Sidemenu -->
         <div id="sidebar-menu">
-            <!-- Left Menu Start -->
-            {{-- <ul class="metismenu list-unstyled" id="side-menu">
-                @foreach ($navbars as $navbarItem)
-                    <li>
-                        @if (count($navbarItem->childs))
-                            <a href="#" class="has-arrow" data-toggle="collapse"
-                                data-target="#{{ $navbarItem->slug }}">
-                                <i class="{{ $navbarItem->menu_icon }} icon nav-icon"></i>
-                                <span class="menu-item"
-                                    data-key="{{ $navbarItem->slug }}">{{ $navbarItem->menu_name }}</span>
-                            </a>
-                        @else
-                            <a href="{{ $navbarItem->menu_path }}">
-                                <i class="{{ $navbarItem->menu_icon }} icon nav-icon"></i>
-                                <span class="menu-item"
-                                    data-key="{{ $navbarItem->slug }}">{{ $navbarItem->menu_name }}</span>
-                            </a>
-                        @endif
-                        @if (count($navbarItem->childs))
-                            <ul class="sub-menu collapse" aria-expanded="false">
-                                @foreach ($navbarItem->childs as $child)
-                                    <li><a href="{{ $child->menu_path }}"
-                                            data-key="{{ $child->slug }}">{{ $child->menu_name }}</a>
-                                        @if (count($child->childs))
-                                            <ul class="sub-menu" aria-expanded="false">
-                                                @foreach ($child->childs as $lavel2)
-                                                    <li><a href="{{ $lavel2->menu_path }}"
-                                                            data-key="{{ $lavel2->slug }}">{{ $lavel2->menu_name }}</a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        @endif
-
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </li>
-                    </li>
-                @endforeach
-            </ul> --}}
             @php
                 $usr = Auth::guard('web')->user();
             @endphp
             <ul class="metismenu list-unstyled" id="side-menu">
-                {{-- @if ($usr->can('admin.dashboard')) --}}
                 <li>
                     <a href="{{ route('admin.dashboard.index') }}">
                         <i class="fa fa-home icon nav-icon" aria-hidden="true"></i>
                         <span class="menu-item" data-key="dashboard">Dashboard</span>
                     </a>
                 </li>
-                {{-- @endif --}}
-                @if ($usr->can('clients.index'))
+                @if ($usr->can('clients.index') || $usr->can('tnc.index') || $usr->can('client-term.index') || $usr->can('industry-type.index'))
                     <li>
                         <a href="#" class="has-arrow" data-toggle="collapse" data-target="#clients">
                             <i class="fa fa-users icon nav-icon" aria-hidden="true"></i>
@@ -94,10 +51,18 @@
                             @if ($usr->can('clients.index'))
                                 <li><a href="{{ route('clients.index') }}" data-key="">Clients</a></li>
                             @endif
+                            @if ($usr->can('tnc.index'))
+                                <li><a href="{{ route('tnc.index') }}" data-key="tnc-template">TNC Template</a></li>
+                            @endif
+                            @if ($usr->can('client-term.index'))
+                                <li><a href="{{ route('client-term.index') }}" data-key="client-terms">Client Terms</a>
+                                </li>
+                            @endif
+                            <li><a href="{{ route('job-category.index') }}" data-key="industry-type">Industry Type</a></li>
                         </ul>
                     </li>
                 @endif
-                @if ($usr->can('tnc.index') || $usr->can('client-term.index') || $usr->can('industry-type.index'))
+                {{-- @if ($usr->can('tnc.index') || $usr->can('client-term.index') || $usr->can('industry-type.index'))
                     <li>
                         <a href="#" class="has-arrow" data-toggle="collapse" data-target="#client-setting">
                             <i class="fa fa-bitbucket icon nav-icon" aria-hidden="true"></i>
@@ -112,13 +77,9 @@
                                 </li>
                             @endif
                             <li><a href="{{ route('job-category.index') }}" data-key="industry-type">Industry Type</a></li>
-                            {{-- @if ($usr->can('industry-type.index'))
-                                <li><a href="{{ route('industry-type.index') }}" data-key="industry-type">Industry
-                                        Type</a></li>
-                            @endif --}}
                         </ul>
                     </li>
-                @endif
+                @endif --}}
                 @if ($usr->can('employee.index'))
                     <li>
                         <a href="#" class="has-arrow" data-toggle="collapse" data-target="#employee">
@@ -184,10 +145,10 @@
                             <span class="menu-item" data-key="candidate">Candidate</span>
                         </a>
                         <ul class="sub-menu collapse mm-collapse" aria-expanded="false">
-                            @if ($usr->can('candidate.create'))
+                            {{-- @if ($usr->can('candidate.create'))
                                 <li><a href="{{ route('candidate.create') }}" data-key="candidates">Walk In
                                         Candidate</a></li>
-                            @endif
+                            @endif --}}
                             @if ($usr->can('candidate.index'))
                                 <li><a href="{{ route('candidate.index') }}" data-key="candidates">Candidates</a>
                                 </li>

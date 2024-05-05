@@ -1104,8 +1104,8 @@
                                     enctype="multipart/form-data">
                                     @csrf
                                     @method('PATCH')
-                                    <h5 class="mb-5">Terms & Conditions</h5>
-                                    <div class="row">
+                                    <div class="row" id="print">
+                                        <h5 class="mb-5">Terms & Conditions</h5>
                                         <div class="col-lg-11 m-auto">
                                             <h5>1. Temporary Placement</h5>
                                             <p><strong>A.</strong> Temporary candidates are required to serve 1 week notice
@@ -1163,12 +1163,11 @@
 
                                     </div>
                                     <div class="row">
-                                        <div class="col-sm-9 ms-3 mb-3">
+                                        <div class="col-sm-9 ms-3 my-3">
                                             <div>
-                                                <a href="{{ route('candidate.index') }}"
-                                                    class="btn btn-sm btn-secondary w-md">Back</a>
+                                                <a href="{{ route('candidate.index') }}" class="btn btn-sm btn-secondary w-md">Back</a>
                                                 <button type="submit" class="btn btn-sm btn-info w-md">Submit</button>
-                                                <a href="#" class="btn btn-sm btn-warning w-md">Print</a>
+                                                <a onclick="printDiv('print')" class="btn btn-sm btn-warning w-md">Print</a>
                                             </div>
                                         </div>
                                     </div>
@@ -1449,7 +1448,7 @@
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Client Company <span class="text-danger">*</span> </label>
                                                     <div class="col-sm-9">
-                                                        <select name="client_company" id="shortlist_client_company"
+                                                        <select name="client_company_s" id="shortlist_client_company"
                                                             class="form-control single-select-field">
                                                             <option value="">Select One</option>
                                                             @foreach ($clients as $client)
@@ -1822,7 +1821,7 @@
                                                     <tr>
                                                         <td>{{ $loop->index + 1 }}</td>
                                                         <td>{{ $remark->assignTo?->employee_name }}</td>
-                                                        <td>{{ $remark->assign_client?->client?->client_name }}</td>
+                                                        <td>{{ $remark->client?->client_name ?? $remark->assign_client?->client?->client_name  }}</td>
                                                         <td>{{ $remark->remarksType->remarkstype_code }}</td>
                                                         <td>{!! $remark->remarks !!}</td>
                                                         <td>{{ $remark->Assign->name }}</td>
@@ -2484,13 +2483,19 @@
         <script src="{{ URL::asset('build/js/pages/form-editor.init.js') }}"></script>
 
         <script language="javascript" type="text/javascript">
+            function printDiv(divId) {
+                var printContents = document.getElementById(divId).innerHTML;
+                document.body.innerHTML = printContents;
+                window.print();
+                    // Change the URL without reloading the page
+                window.location.href = window.location.origin + window.location.pathname + '#terms_conditions';
+                location.reload();
+            }
+
             if (window.location.hash) {
                 var hash = window.location.hash;
                 document.querySelector('[href="' + hash + '"]').click();
             }
-        </script>
-        <script>
-
             $(document).ready(function() {
                 $('body').on('change','#remark_type_test',function () {
                     var selectedValue = $(this).val();
@@ -2754,6 +2759,7 @@
                 });
             });
         </script>
+
         @include('admin.candidate.inc.teamjs');
         <script src="{{ asset('build/js/ajax/candidateDeclaration.js') }}"></script>
         {{-- <script src="{{ asset('build/js/ajax/candidate/genaral.js') }}"></script> --}}

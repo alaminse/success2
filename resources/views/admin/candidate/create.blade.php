@@ -272,23 +272,12 @@
                                                             <select class="form-control" id="country_code" name="country_code">
                                                                 <option value="+65">+65</option>
                                                                 <option value="+60">+60</option>
-                                                                <!-- Add more country codes as needed -->
                                                             </select>
                                                         </div>
                                                         <input type="text" class="form-control" name="candidate_mobile" placeholder="Mobile" required maxlength="10">
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            {{-- <div class="row col-md-6 col-lg-6 mb-1">
-                                                <label for="candidate_mobile"
-                                                    class="col-sm-5 col-form-label fw-bold">Mobile<span
-                                                        class="text-danger">*</span></label>
-                                                <div class="col-sm-7">
-                                                    <input type="text" class="form-control" name="candidate_mobile"
-                                                        placeholder="Mobile" required>
-                                                </div>
-                                            </div> --}}
                                             <div class="row col-md-6 col-lg-6 mb-1">
                                                 <label for="candidate_home_phone"
                                                     class="col-sm-5 col-form-label fw-bold">Home Tel</label>

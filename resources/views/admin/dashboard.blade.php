@@ -349,7 +349,10 @@
                                                         <th>Candidate Name</th>
                                                         <th>Mobile</th>
                                                         <th>Email</th>
-                                                        <th>Manager</th>
+                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                        @else
+                                                            <th>Manager</th>
+                                                        @endif
                                                         <th>Consultant / Leader</th>
                                                         <th class="text-center">Action</th>
                                                     </tr>
@@ -363,8 +366,11 @@
                                                             <td>{{ $candidate->candidate['candidate_name'] }}</td>
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}</td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                            </td>
+                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                            @else
+                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                                </td>
+                                                            @endif
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
@@ -419,7 +425,10 @@
                                                             <th>Candidate Name</th>
                                                             <th>Mobile</th>
                                                             <th>Email</th>
-                                                            <th>Manager</th>
+                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                            @else
+                                                                <th>Manager</th>
+                                                            @endif
                                                             <th>Consultant / Leader</th>
                                                             <th>Date Time</th>
                                                             <th>Action</th>
@@ -435,8 +444,11 @@
                                                                 <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                                 </td>
                                                                 <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                                </td>
+                                                                @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                                @else
+                                                                    <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                                    </td>
+                                                                @endif
                                                                 <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                                 </td>
                                                                 <td>{{ \Carbon\Carbon::parse($candidate->candidate['created_at'])->format('d-M-Y') }}
@@ -490,7 +502,10 @@
                                                         <th>Candidate Name</th>
                                                         <th>Mobile</th>
                                                         <th>Email</th>
-                                                        <th>Manager</th>
+                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                        @else
+                                                            <th>Manager</th>
+                                                        @endif
                                                         <th>Consultant / Leader</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -505,7 +520,11 @@
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                             </td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                            @else
+                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                                </td>
+                                                            @endif
                                                             </td>
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
@@ -557,7 +576,10 @@
                                                         <th>Candidate Name</th>
                                                         <th>Mobile</th>
                                                         <th>Email</th>
-                                                        <th>Manager</th>
+                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                        @else
+                                                            <th>Manager</th>
+                                                        @endif
                                                         <th>Consultant / Leader</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -580,11 +602,14 @@
                                                             </td>
                                                             <td
                                                                 class="{{ $candidate['remark_id'] == 8 ? 'text-danger' : '' }}">
-                                                                {{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td
-                                                                class="{{ $candidate['remark_id'] == 8 ? 'text-danger' : '' }}">
+                                                                {{ $candidate->candidate['candidate_email'] }}
+                                                            </td>
+                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                            @else
+                                                                <td class="{{ $candidate['remark_id'] == 8 ? 'text-danger' : '' }}">
                                                                 {{ $candidate->candidate['manager']['employee_name'] ?? '' }}
                                                             </td>
+                                                            @endif
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row {{ $candidate['remark_id'] == 8 ? 'text-danger' : '' }}">
@@ -634,7 +659,10 @@
                                                         <th>Candidate Name</th>
                                                         <th>Mobile</th>
                                                         <th>Email</th>
-                                                        <th>Manager</th>
+                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                        @else
+                                                            <th>Manager</th>
+                                                        @endif
                                                         <th>Consultant / Leader</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -651,8 +679,11 @@
                                                                 <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                                 </td>
                                                                 <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                                @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                                @else
+                                                                    <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
                                                                 </td>
+                                                                @endif
                                                                 <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                                 </td>
                                                                 <td class="d-flex flex-row">
@@ -719,8 +750,7 @@
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                             </td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                            </td>
+                                                            <td>{{ $candidate->client?->client_name }}</td>
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
@@ -785,8 +815,7 @@
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                             </td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                            </td>
+                                                            <td>{{ $candidate->client?->client_name }}</td>
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
@@ -851,8 +880,7 @@
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                             </td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                            </td>
+                                                            <td>{{ $candidate->client?->client_name }}</td>
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
@@ -917,8 +945,7 @@
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                             </td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                            </td>
+                                                            <td>{{ $candidate->client?->client_name }}</td>
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
@@ -968,7 +995,10 @@
                                                         <th>Candidate Name</th>
                                                         <th>Mobile</th>
                                                         <th>Email</th>
-                                                        <th>Manager</th>
+                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                        @else
+                                                            <th>Manager</th>
+                                                        @endif
                                                         <th>Consultant / Leader</th>
                                                         <th>Action</th>
                                                     </tr>
@@ -982,8 +1012,11 @@
                                                             <td>{{ $candidate->candidate['candidate_name'] }}</td>
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}</td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                            @else
+                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
                                                             </td>
+                                                            @endif
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">
@@ -1037,7 +1070,10 @@
                                                             <th>Candidate Name</th>
                                                             <th>Mobile</th>
                                                             <th>Email</th>
-                                                            <th>Manager</th>
+                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                            @else
+                                                                <th>Manager</th>
+                                                            @endif
                                                             <th>Consultant / Leader</th>
                                                             <th>Date Time</th>
                                                             <th>Action</th>
@@ -1053,8 +1089,11 @@
                                                                 <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                                 </td>
                                                                 <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                                @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                                @else
+                                                                    <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
                                                                 </td>
+                                                                @endif
                                                                 <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                                 </td>
                                                                 <td>{{ \Carbon\Carbon::parse($candidate->candidate['created_at'])->format('d-M-Y') }}
@@ -1123,8 +1162,7 @@
                                                             <td>{{ $candidate->candidate['candidate_home_phone'] }}
                                                             </td>
                                                             <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                            </td>
+                                                            <td>{{ $candidate->client?->client_name }}</td>
                                                             <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
                                                             </td>
                                                             <td class="d-flex flex-row">

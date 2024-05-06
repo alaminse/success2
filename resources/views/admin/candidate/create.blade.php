@@ -265,12 +265,17 @@
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
-                                                <label for="candidate_mobile"
-                                                    class="col-sm-5 col-form-label fw-bold">Mobile<span
-                                                        class="text-danger">*</span></label>
+                                                <label for="candidate_mobile" class="col-sm-5 col-form-label fw-bold">Mobile<span class="text-danger">*</span></label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" name="candidate_mobile"
-                                                        placeholder="Mobile" required>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <select class="form-control" id="country_code" name="country_code">
+                                                                <option value="+65">+65</option>
+                                                                <option value="+60">+60</option>
+                                                            </select>
+                                                        </div>
+                                                        <input type="text" class="form-control" name="candidate_mobile" placeholder="Mobile" required maxlength="10">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
@@ -278,7 +283,7 @@
                                                     class="col-sm-5 col-form-label fw-bold">Home Tel</label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control" id="candidate_home_phone"
-                                                        name="candidate_home_phone" placeholder="Home Tel">
+                                                        name="candidate_home_phone" placeholder="Home Tel" maxlength="13">
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
@@ -290,8 +295,9 @@
                                                         class="form-control" placeholder="Email">
                                                 </div>
                                             </div>
-                                            
-                                            <div class="row col-md-6 col-lg-6 mb-1">
+
+                                            <input type="hidden" name="candidate_outlet_id" value="0">
+                                            {{-- <div class="row col-md-6 col-lg-6 mb-1">
                                                 <label for="candidate_outlet_id"
                                                     class="col-sm-5 col-form-label fw-bold">Outlet<span
                                                         class="text-danger">*</span></label>
@@ -306,7 +312,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="row col-md-6 col-lg-6 mb-1">
                                                 <label for="candidate_isBlocked"
                                                     class="col-sm-5 col-form-label fw-bold">Black List</label>
@@ -610,9 +616,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
-                                                    <label for="one" class="col-sm-4 col-form-label">Contact No /
-                                                        Email
-                                                        Address</label>
+                                                    <label for="one" class="col-sm-4 col-form-label">Contact No / Email Address</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" name="candidate_referee_contact1"
                                                             class="form-control" placeholder="Contact No">
@@ -1080,7 +1084,7 @@
                             type: 'GET',
                             url: '/ATS/get/consultant/' + teamLeaderId,
                             success: function(data) {
-                                $('#consultantSelect').empty();
+                                console.log(data);
                                 let option = $('<option>', {
                                     value: '',
                                     text: 'Choose One',
@@ -1127,8 +1131,9 @@
                         type: 'GET',
                         url: '/ATS/get/consultant/' + auth,
                         success: function(data) {
+                            console.log(data);
                             $('#consultantSelect').empty();
-                            $.each(data, function(key, value) {
+                            // $.each(data, function(key, value) {
                                 let option = $('<option>', {
                                     value: '',
                                     text: 'Choose One',
@@ -1141,7 +1146,7 @@
                                     });
                                     $('#consultantSelect').append(option);
                                 });
-                            });
+                            // });
                         }
                     });
                 }

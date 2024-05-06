@@ -16,8 +16,7 @@
                 <td>{{ $data->name }}</td>
                 <td>{{ $data->email }}</td>
                 <td>{{ $data->phone_no }}</td>
-                <td><a target="_blank" href="{{ asset('storage') }}/{{ $data->resume_path }}" class="btn btn-info btn-sm"><i
-                            class="fa fa-eye"></i></a></td>
+                <td><a target="_blank" href="{{ asset('storage') }}/{{ $data->resume_path }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a></td>
                 <td class="d-flex flex-row-reverse">
                     <form action="{{ route('temporary.data.delete', $data->id) }}" method="POST">
                         @csrf

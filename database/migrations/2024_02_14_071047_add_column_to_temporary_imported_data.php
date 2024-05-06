@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('temporary_imported_data', function (Blueprint $table) {
-            $table->foreignId('assaign_to')->nullable()->constrained('employees')->onDelete('restrict');
+            $table->foreignId('assign_to')->nullable()->constrained('employees')->onDelete('restrict');
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('temporary_imported_data', function (Blueprint $table) {
-            $table->dropColumn('assaign_to');
+            $table->dropColumn('assign_to');
         });
     }
 };

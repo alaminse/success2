@@ -41,7 +41,7 @@
                         </div>
                     @endif
                     <div class="card-body">
-                        <h6>Create Jobs Category</h6>
+                        {{-- <h6>Create Jobs Category</h6> --}}
                         <div class="row">
                             <div class="col-lg-12 mt-2">
                                 <div class="admin-dashboard-table">

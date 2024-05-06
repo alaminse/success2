@@ -132,7 +132,7 @@ Search Candidate Detail
                                     <th>Phone</th>
                                     <th>Email</th>
                                     <th>Resume Detail</th>
-                                    <th></th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>

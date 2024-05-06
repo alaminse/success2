@@ -48,14 +48,14 @@
                             <div class="tab-content text-muted">
                                 <div class="tab-pane active mb-4" id="General" role="tabpanel">
                                     <div class="row">
-                                        <div class="row col-lg-6 mb-1">
+                                        {{-- <div class="row col-lg-6 mb-1">
                                             <label for="one" class="col-sm-5 col-form-label">Client
                                                 Code <span class="text-danger">*</span></label>
                                             <div class="col-sm-7">
                                                 <input type="text" name="client_code" class="form-control"
                                                     placeholder="Client Code" value="{{ old('client_code') }}" required>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="row col-lg-6 mb-1">
                                             <label for="one" class="col-sm-5 col-form-label">Client
                                                 Name <span class="text-danger">*</span> </label>
@@ -72,10 +72,9 @@
                                                 <select name="employees_id" id="employees_id" class="form-control single-select-field" required>
                                                     <option value="">Choose One</option>
                                                     @foreach (\Spatie\Permission\Models\Role::select('id', 'name')->whereNotIn('id', [1])->get() as $role)
-                                                        <option disabled class="text-danger">{{$role->name}}</option>
+                                                        <option disabled class="bg-danger">{{$role->name}}</option>
                                                         @foreach (\App\Models\Employee::where('roles_id', $role->id)->get() as $incharge)
-                                                            <option value="{{ $incharge->id }}">
-                                                                {{ $incharge->employee_name }}</option>
+                                                            <option value="{{ $incharge->id }}" {{old('employees_id') == $incharge->id ? 'selected' : ''}}>{{ $incharge->employee_name }}</option>
                                                         @endforeach
                                                     @endforeach
                                                 </select>
@@ -178,12 +177,17 @@
                                         </div>
                                     </div>
                                     <div class="row col-lg-6 mb-1">
-                                        <label for="thirteen" class="col-sm-5 col-form-label">Contact
-                                            Number <span class="text-danger">*</span></label>
+                                        <label for="thirteen" class="col-sm-5 col-form-label">Contact Number <span class="text-danger">*</span></label>
                                         <div class="col-sm-7">
-                                            <input type="text" name="client_contact_number" class="form-control"
-                                                placeholder="Contact Number" value="{{ old('client_contact_number') }}"
-                                                required>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <select class="form-control" id="country_code" name="country_code">
+                                                        <option value="+65">+65</option>
+                                                        <option value="+60">+60</option>
+                                                    </select>
+                                                </div>
+                                                <input type="text" name="client_contact_number" class="form-control" placeholder="Contact Number" value="{{ old('client_contact_number') }}" required maxlength="10">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row col-lg-6  mb-1">
@@ -210,19 +214,18 @@
                                                 value="{{ old('client_attention_designation') }}">
                                         </div>
                                     </div>
-                                    <div class="row col-lg-6  mb-1">
-                                        <label for="eighteen" class="col-sm-5 col-form-label">Designation</label>
+                                    <div class="row col-lg-6 mb-1">
+                                        <label for="nineteen" class="col-sm-5 col-form-label">Phone Number</label>
                                         <div class="col-sm-7">
-                                            <input type="text" name="client_designation" class="form-control"
-                                                placeholder="Designation" value="{{ old('client_designation') }}">
-                                        </div>
-                                    </div>
-                                    <div class="row col-lg-6  mb-1">
-                                        <label for="nineteen" class="col-sm-5 col-form-label">Phone
-                                            Number</label>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="client_phone" class="form-control"
-                                                placeholder="Phone Number" value="{{ old('client_phone') }}">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <select class="form-control" id="client_country_code" name="client_country_code">
+                                                        <option value="+65">+65</option>
+                                                        <option value="+60">+60</option>
+                                                    </select>
+                                                </div>
+                                                <input type="text" name="client_phone" class="form-control" placeholder="Phone Number" value="{{ old('client_phone') }}" axlength="10">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row col-lg-6  mb-1">

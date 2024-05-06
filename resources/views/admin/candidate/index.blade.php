@@ -51,8 +51,8 @@
                                             {{ $loop->index + 1 }}
                                         </td>
                                         <td>{{ $data->id }}</td>
-                                        <td>{{ $data->candidate_name }}</td>
-                                        <td>{{ $data->candidate_email }}</td>
+                                        <td  onclick="getRemark({{ $data->id }})">{{ $data->candidate_name }}</td>
+                                        <td  onclick="getRemark({{ $data->id }})">{{ $data->candidate_email }}</td>
                                         <td>{{ $data->candidate_mobile }}</td>
                                         <td>{{ $data->updated_at }}</td>
                                         <td>
@@ -81,8 +81,7 @@
                                                 <a href="{{ route('candidate.edit', $data->id) }}#remark"
                                                     class="btn btn-warning btn-sm me-1 d-flex justify-content-start" data-bs-toggle="tooltip"
                                                     data-bs-placement="top" title="Add Remark"><i class="fas fa-plus mt-1 me-1"></i> R</a>
-                                                <a onclick="getRemark({{ $data->id }})"
-                                                    class="btn btn-success btn-sm me-1">R</a>
+                                                <a onclick="getRemark({{ $data->id }})" class="btn btn-success btn-sm me-1">R</a>
                                             @endif
                                             @if (App\Helpers\FileHelper::usr()->can('candidate.update'))
                                                 <a href="{{ route('candidate.edit', $data->id) }}"

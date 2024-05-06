@@ -117,9 +117,7 @@
                                             @endif
                                             @if ($auth->roles_id == 1 || $auth->roles_id == 4)
                                             <div class="row col-md-6 col-lg-6 mb-1">
-                                                <label for="teamLeaderSelect" class="col-sm-5 col-form-label fw-bold">Team
-                                                    Leader<span
-                                                        class="text-danger">*</span></label>
+                                                <label for="teamLeaderSelect" class="col-sm-5 col-form-label fw-bold">Team Leader<span class="text-danger">*</span></label>
                                                 <div class="col-sm-7">
                                                     <select name="team_leader_id" id="teamLeaderSelect"
                                                         class="form-control single-select-field">
@@ -134,8 +132,7 @@
                                                     class="col-sm-5 col-form-label fw-bold">Consultant<span
                                                         class="text-danger">*</span></label>
                                                 <div class="col-sm-7">
-                                                    <select id="consultantSelect" class="form-control single-select-field"
-                                                        name="consultant_id">
+                                                    <select id="consultantSelect" class="form-control single-select-field" name="consultant_id">
                                                         <option value="" selected disabled>Select One </option>
                                                     </select>
                                                 </div>
@@ -146,20 +143,19 @@
                                                     class="col-sm-5 col-form-label fw-bold">Candidate Name<span
                                                         class="text-danger">*</span></label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" id="candidate_name" name="candidate_name"
+                                                    <input type="text" id="candidate_name" name="candidate_name" value="{{old('candidate_name')}}"
                                                         class="form-control" placeholder="Candidate name" required>
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
-                                                <label for="passtypes_id" class="col-sm-5 col-form-label fw-bold">Type Of
-                                                    Pass</label>
+                                                <label for="passtypes_id" class="col-sm-5 col-form-label fw-bold">Type Of Pass</label>
                                                 <div class="col-sm-7">
                                                     <select id="passtypes_id" name="passtypes_id"
                                                         class="form-control single-select-field">
                                                         <option value="">Select One</option>
                                                         @foreach ($passtype_data as $row)
                                                             <option value="{{ $row->id }}"
-                                                                {{ old('passtype_id') == $row->id ? 'selected' : '' }}>
+                                                                {{ old('passtypes_id') == $row->id ? 'selected' : '' }}>
                                                                 {{ $row->passtype_code }}</option>
                                                         @endforeach
                                                     </select>
@@ -170,7 +166,7 @@
                                                     class="col-sm-5 col-form-label fw-bold">NRIC/FIN
                                                     No.</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" name="candidate_nric" id="candidate_nric"
+                                                    <input type="text" name="candidate_nric" id="candidate_nric" value="{{old('candidate_nric')}}"
                                                         class="form-control" placeholder="NRIC/FIN No.">
                                                 </div>
                                             </div>
@@ -178,7 +174,7 @@
                                                 <label for="candidate_birthdate"
                                                     class="col-sm-5 col-form-label fw-bold">Date of Birth</label>
                                                 <div class="col-sm-7">
-                                                    <input type="date" id="candidate_birthdate"
+                                                    <input type="date" id="candidate_birthdate" value="{{old('candidate_birthdate')}}"
                                                         name="candidate_birthdate" class="form-control"
                                                         placeholder="Date of Birth">
                                                 </div>
@@ -270,11 +266,11 @@
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <select class="form-control" id="country_code" name="country_code">
-                                                                <option value="+65">+65</option>
-                                                                <option value="+60">+60</option>
+                                                                <option value="+65" {{old('country_code') == '+65' ? 'selected' : '' }}>+65</option>
+                                                                <option value="+60" {{old('country_code') == '+60' ? 'selected' : '' }}>+60</option>
                                                             </select>
                                                         </div>
-                                                        <input type="text" class="form-control" name="candidate_mobile" placeholder="Mobile" required maxlength="10">
+                                                        <input type="text" class="form-control" value="{{old('candidate_mobile')}}" name="candidate_mobile" placeholder="Mobile" required maxlength="10">
                                                     </div>
                                                 </div>
                                             </div>
@@ -283,7 +279,7 @@
                                                     class="col-sm-5 col-form-label fw-bold">Home Tel</label>
                                                 <div class="col-sm-7">
                                                     <input type="text" class="form-control" id="candidate_home_phone"
-                                                        name="candidate_home_phone" placeholder="Home Tel" maxlength="13">
+                                                        name="candidate_home_phone" placeholder="Home Tel" maxlength="13" value="{{old('candidate_home_phone')}}">
                                                 </div>
                                             </div>
                                             <div class="row col-md-6 col-lg-6 mb-1">
@@ -291,8 +287,7 @@
                                                     class="col-sm-5 col-form-label fw-bold">Email<span
                                                         class="text-danger">*</span></label>
                                                 <div class="col-sm-7">
-                                                    <input type="email" name="candidate_email" id="candidate_email"
-                                                        class="form-control" placeholder="Email">
+                                                    <input type="email" name="candidate_email" id="candidate_email" class="form-control" placeholder="Email" value="{{old('candidate_email')}}">
                                                 </div>
                                             </div>
 
@@ -319,7 +314,7 @@
                                                 <div class="col-sm-7">
                                                     <select name="candidate_isBlocked" id="candidate_isBlocked"
                                                         class="form-control single-select-field">
-                                                        <option value="">Select One</option>
+                                                        <option value="" selected>Select One</option>
                                                         <option value="1"
                                                             {{ old('candidate_isBlocked') == 1 ? 'selected' : '' }}>Yes
                                                         </option>
@@ -343,11 +338,10 @@
                                         <div class="col-lg-6">
                                             <div class="mt-5 mt-lg-4 mt-xl-0">
                                                 <div class="row mb-1">
-                                                    <label for="one" class="col-sm-4 col-form-label">Postal Code
-                                                        1</label>
+                                                    <label for="one" class="col-sm-4 col-form-label">Postal Code 1</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" name="candidate_postal_code"
-                                                            class="form-control" placeholder="Postal Code">
+                                                            class="form-control" placeholder="Postal Code" value="{{old('candidate_postal_code')}}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
@@ -355,7 +349,7 @@
                                                         1</label>
                                                     <div class="col-sm-8">
                                                         <input type="text" name="candidate_unit_number"
-                                                            class="form-control" placeholder="Unit No">
+                                                            class="form-control" placeholder="Unit No" value="{{old('candidate_unit_number')}}">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-1">
@@ -1131,7 +1125,6 @@
                         type: 'GET',
                         url: '/ATS/get/consultant/' + auth,
                         success: function(data) {
-                            console.log(data);
                             $('#consultantSelect').empty();
                             // $.each(data, function(key, value) {
                                 let option = $('<option>', {

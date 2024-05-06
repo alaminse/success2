@@ -116,7 +116,7 @@
                     @endif
                     @if (isset($consultents))
 
-                    @foreach ($consultents as $consultent)
+                    @foreach ($consultents as $consultant)
 
                     <div class="col-xl-6">
                         <div class="card">
@@ -128,8 +128,8 @@
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapse{{ $loop->index }}" aria-expanded="false"
                                                 aria-controls="flush-collapse{{ $loop->index }}">
-                                                Consultent: {{ $consultent->employee_name }} - Total
-                                                {{ count($candidatesByConsultent[$consultent->id]) }} Resumes
+                                                Consultant: {{ $consultant->employee_name }} - Total
+                                                {{ count($candidatesByConsultent[$consultant->id]) }} Resumes
                                             </button>
                                         </h2>
                                         <div id="flush-collapse{{ $loop->index }}" class="accordion-collapse collapse"
@@ -146,7 +146,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($candidatesByConsultent[$consultent->id] ?? [] as $candidate)
+                                                    @foreach ($candidatesByConsultent[$consultant->id] ?? [] as $candidate)
                                                         <tr>
                                                             <td>{{ $candidate['candidate_name'] }}</td>
                                                         </tr>
@@ -273,6 +273,5 @@
 
         <!-- Calendar init -->
         <script src="{{ URL::asset('build/js/pages/calendar.init.js') }}"></script>
-        <!-- App js
-                                        <script src="{{ URL::asset('build/js/app.js') }}"></script>-->
+        {{-- <script src="{{ URL::asset('build/js/app.js') }}"></script> --}}
     @endsection

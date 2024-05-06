@@ -61,11 +61,9 @@
             margin: 0;
         }
     </style>
-
     <body>
-    @endsection
-    @section('content')
-
+@endsection
+@section('content')
     @php
         $auth = Auth::user()->employe;
     @endphp
@@ -82,8 +80,7 @@
                                                     data-bs-toggle="collapse"
                                                     data-bs-target="#flush-collapse-own-manager"
                                                     aria-expanded="false" aria-controls="flush-collapse-own-manager">
-                                                    Own Manager: - Total
-                                                    {{ count($own_manager) }} Resumes
+                                                    Own Manager: - {{ count($own_manager) }} Resumes
                                                 </button>
                                             </h2>
                                             <div id="flush-collapse-own-manager" class="accordion-collapse collapse"
@@ -146,8 +143,7 @@
                                                     data-bs-toggle="collapse"
                                                     data-bs-target="#flush-collapse{{ $loop->index }}"
                                                     aria-expanded="false" aria-controls="flush-collapse{{ $loop->index }}">
-                                                    Managers: {{ $manager->employee_name }} - Total
-                                                    {{ count($candidatesByManager[$manager->id]) }} Resumes
+                                                    Managers: {{ $manager->employee_name }} - {{ count($candidatesByManager[$manager->id]) }} Resumes
                                                 </button>
                                             </h2>
                                             <div id="flush-collapse{{ $loop->index }}" class="accordion-collapse collapse"
@@ -211,8 +207,7 @@
                                                     data-bs-target="#flush-collapse-tl{{ $loop->index }}"
                                                     aria-expanded="false"
                                                     aria-controls="flush-collapse-tl{{ $loop->index }}">
-                                                    Team Leader: {{ $team->employee_name }} - Total
-                                                    {{ count($candidatesByTeam[$team->id]) }} Resumes
+                                                    Team Leader: {{ $team->employee_name }} - {{ count($candidatesByTeam[$team->id]) }} Resumes
                                                 </button>
                                             </h2>
                                             <div id="flush-collapse-tl{{ $loop->index }}" class="accordion-collapse collapse"
@@ -263,11 +258,11 @@
                             </div>
                         </div>
                     @endforeach
-                    @foreach ($consultants as $consultent)
+                    @foreach ($consultants as $consultant)
                         <div class="col-xl-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="accordion accordion-flush" id="accordionFlushExample_con-{{$consultent->id}}">
+                                    <div class="accordion accordion-flush" id="accordionFlushExample_con-{{$consultant->id}}">
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-heading-con{{ $loop->index }}">
                                                 <button class="accordion-button fw-medium collapsed" type="button"
@@ -275,13 +270,12 @@
                                                     data-bs-target="#flush-collapse-con{{ $loop->index }}"
                                                     aria-expanded="false"
                                                     aria-controls="flush-collapse-con{{ $loop->index }}">
-                                                    {{ $consultent->id == $auth->id ? 'Manage Own' : 'Consultent: '. $consultent->employee_name }} - Total
-                                                    {{ count($candidatesByConsultent[$consultent->id]) }} Resumes
+                                                    {{ $consultant->id == $auth->id ? 'Manage Own' : 'Consultant: '. $consultant->employee_name }} - {{ count($candidatesByConsultent[$consultant->id]) }} Resumes
                                                 </button>
                                             </h2>
                                             <div id="flush-collapse-con{{ $loop->index }}" class="accordion-collapse collapse"
                                                 aria-labelledby="flush-heading-con{{ $loop->index }}"
-                                                data-bs-parent="#accordionFlushExample_con-{{$consultent->id}}" style="">
+                                                data-bs-parent="#accordionFlushExample_con-{{$consultant->id}}" style="">
                                                 <table class="table table-bordered mb-0 dataTable">
                                                     <thead>
                                                         <tr>
@@ -292,7 +286,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($candidatesByConsultent[$consultent->id] ?? [] as $consultant)
+                                                        @foreach ($candidatesByConsultent[$consultant->id] ?? [] as $consultant)
                                                             <tr>
                                                                 <td>{{ $loop->index + 1 }}</td>
                                                                 <td>{{ $consultant->candidate->candidate_name }}</td>
@@ -487,7 +481,7 @@
                                             <button class="accordion-button fw-medium collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#Interview-collapse"
                                                 aria-expanded="false" aria-controls="Interview-collapse">
-                                                Interview
+                                                Interviews
                                             </button>
                                         </h2>
 
@@ -851,7 +845,7 @@
                                             <button class="accordion-button fw-medium collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#total-candidate-collapse"
                                                 aria-expanded="false" aria-controls="total-candidate-collapse ">
-                                                Total Candidate Assign to Client
+                                                Assigned to Client
                                             </button>
                                         </h2>
 
@@ -1144,7 +1138,7 @@
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Candidate Name</th>
-                                                        <th>Mobile</th>
+                                                        <th style="width: 100px">Mobile</th>
                                                         <th>Email</th>
                                                         <th>Client Name</th>
                                                         <th>Consultant / Leader</th>
@@ -1242,6 +1236,26 @@
         <script src="{{ URL::asset('build/libs/fullcalendar/main.min.js') }}"></script>
         {{-- <script src="{{ URL::asset('build/js/pages/calendar.init.js') }}"></script> --}}
         <script>
+            // Get all accordion items
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            // Add event listener to each accordion item
+            accordionItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Close all accordion items except the clicked one
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            const collapse = otherItem.querySelector('.accordion-collapse');
+                            const accordionButton = otherItem.querySelector('.accordion-button');
+                            if (collapse.classList.contains('show')) {
+                                collapse.classList.remove('show');
+                                accordionButton.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                });
+            });
+
             document.addEventListener("DOMContentLoaded", function() {
                 let defaultEvents = @json($calander_datas);
 
@@ -1349,11 +1363,34 @@
                 $('.resumePath').on('click', function() {
                     let filePath = $(this).data('file-path');
                     const iframe = document.getElementById('pdfViewer');
-                    let publicUrl = "{{ asset(Storage::url('')) }}" + "/" + filePath;
-                    iframe.src = publicUrl;
-                    iframe.width = "100%";
-                    iframe.height = "600px";
+                    if (filePath) {
+                        let publicUrl = "{{ asset(Storage::url('')) }}" + "/" + filePath;
+
+                        // Check if the publicUrl exists
+                        $.ajax({
+                            url: publicUrl,
+                            type: 'HEAD',
+                            success: function() {
+                                $('#pdfViewer').show();
+                                // File exists
+                                iframe.src = publicUrl;
+                                iframe.width = "100%";
+                                iframe.height = "600px";
+                                $('#noCVMessage').hide();
+                            },
+                            error: function() {
+                                $('#pdfViewer').hide();
+                                $('#noCVMessage').show();
+                            }
+                        });
+                    } else {
+                        // If filePath is empty or invalid
+                        iframe.src = ''; // Clear the iframe src
+                        iframe.width = "0";
+                        iframe.height = "0";
+                    }
                 });
+
             });
 
             $(function() {

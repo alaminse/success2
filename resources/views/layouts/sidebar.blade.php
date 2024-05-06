@@ -161,28 +161,29 @@
                             <li><a href="{{ route('candidates.search') }}" data-key="import-multiple-candidate"><i
                                         class="fa fa-search"></i> Search Function</a></li>
                             {{-- @endif --}}
+                            <li><a href="{{ route('remarks-type.index') }}" data-key="remark-type">Remark Type</a>
+                            </li>
                         </ul>
                     </li>
                 @endif
-                @if ($usr->can('remarks-type.index'))
+                {{-- @if ($usr->can('remarks-type.index'))
                     <li>
                         <a href="#" class="has-arrow" data-toggle="collapse" data-target="#candidate-setting">
                             <i class="fa fa-stack-exchange icon nav-icon" aria-hidden="true"></i>
                             <span class="menu-item" data-key="candidate-setting">Candidate Settings</span>
                         </a>
-                        <ul class="sub-menu collapse mm-collapse" aria-expanded="false">
+                        <ul class="sub-menu collapse mm-collapse" aria-expanded="false"> --}}
                             {{-- <li><a href="/admin/marital-status" data-key="marital-status-c">Marital Status (C)</a>
 
                         </li>
                         <li><a href="/admin/religion" data-key="religion-c">Religion (C)</a>
 
                         </li> --}}
-                            <li><a href="{{ route('remarks-type.index') }}" data-key="remark-type">Remark Type</a>
-
+                            {{-- <li><a href="{{ route('remarks-type.index') }}" data-key="remark-type">Remark Type</a>
                             </li>
                         </ul>
-                    </li>
-                @endif
+                    </li> --}}
+                {{-- @endif --}}
                 @if ($usr->can('job.index') || $usr->can('job-application.index'))
                     <li>
                         <a href="#" class="has-arrow" data-toggle="collapse" data-target="#job-opening">
@@ -349,9 +350,9 @@
                         <li><a href="{{route('menu.index')}}" data-key="menu">Menu</a></li>
                         @endif --}}
                         {{-- @if ($usr->can('company.index')) --}}
-                        <li>
+                        {{-- <li>
                             <a href="{{ route('outlets.index') }}" data-key="outlet-profile">Outlets Profile</a>
-                        </li>
+                        </li> --}}
                         {{-- @endif --}}
                         {{-- @if ($usr->can('company.index'))
                         <li><a href="{{route('company.index')}}" data-key="company-profile">Company Profile</a>

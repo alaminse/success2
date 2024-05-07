@@ -184,26 +184,30 @@
                         </ul>
                     </li> --}}
                 {{-- @endif --}}
-                @if ($usr->can('job.index') || $usr->can('job-application.index'))
-                    <li>
-                        <a href="#" class="has-arrow" data-toggle="collapse" data-target="#job-opening">
-                            <i class="fa-solid fa-business-time icon nav-icon" aria-hidden="true"></i>
-                            <span class="menu-item" data-key="job-opening">Jobs Opening</span>
-                        </a>
-                        <ul class="sub-menu collapse mm-collapse" aria-expanded="false">
-                            @if ($usr->can('job.index'))
-                                <li><a href="{{ route('job.index') }}" data-key="job-posting">Job Posting</a></li>
-                            @endif
-                            @if ($usr->can('job-application.index'))
-                                <li><a href="{{ route('job-application.index') }}" data-key="job-applications">Job
-                                        Applications</a>
-                            @endif
-                    </li>
-            </ul>
-            </li>
+            @if ($usr->can('job.index') || $usr->can('job-application.index') || $usr->can('job-category.index') || $usr->can('job-type.index'))
+                <li>
+                    <a href="#" class="has-arrow" data-toggle="collapse" data-target="#job-opening">
+                        <i class="fa-solid fa-business-time icon nav-icon" aria-hidden="true"></i>
+                        <span class="menu-item" data-key="job-opening">Jobs Opening</span>
+                    </a>
+                    <ul class="sub-menu collapse mm-collapse" aria-expanded="false">
+                        @if ($usr->can('job.index'))
+                            <li><a href="{{ route('job.index') }}" data-key="job-posting">Job Posting</a></li>
+                        @endif
+                        @if ($usr->can('job-application.index'))
+                            <li><a href="{{ route('job-application.index') }}" data-key="job-applications">Job Applications</a></li>
+                        @endif
+                        @if ($usr->can('job-category.index'))
+                            <li><a href="{{ route('job-category.index') }}" data-key="job-category">Job Category</a></li>
+                        @endif
+                        @if ($usr->can('job-type.index'))
+                            <li><a href="{{ route('job-type.index') }}" data-key="job-type">Job Type</a></li>
+                        @endif
+                    </ul>
+                </li>
             @endif
 
-            @if ($usr->can('job-category.index') || $usr->can('job-type.index'))
+            {{-- @if ($usr->can('job-category.index') || $usr->can('job-type.index'))
                 <li>
                     <a href="#" class="has-arrow" data-toggle="collapse" data-target="#job-setting">
                         <i class="fa fa-sun-o icon nav-icon" aria-hidden="true"></i>
@@ -220,12 +224,12 @@
 
                             </li>
                         @endif
-                        {{-- <li><a href="{{ route('job-status.index') }}" data-key="job-status">Job Status</a>
+                        <li><a href="{{ route('job-status.index') }}" data-key="job-status">Job Status</a>
 
-                        </li> --}}
+                        </li>
                     </ul>
                 </li>
-            @endif
+            @endif --}}
             @if ($usr->can('leave.index'))
                 <li>
                     <a href="#" class="has-arrow" data-toggle="collapse" data-target="#leave">
@@ -334,7 +338,7 @@
                         </li>
                     </ul>
                 </li> --}}
-            @if (
+            {{-- @if (
                 $usr->can('company.index') ||
                     $usr->can('company.index') ||
                     $usr->can('bank.index') ||
@@ -345,7 +349,7 @@
                         <i class="fa-solid fa-gear icon nav-icon" aria-hidden="true"></i>
                         <span class="menu-item" data-key="setting">Settings</span>
                     </a>
-                    <ul class="sub-menu collapse mm-collapse" aria-expanded="false">
+                    <ul class="sub-menu collapse mm-collapse" aria-expanded="false"> --}}
                         {{-- @if ($usr->can('menu.index'))
                         <li><a href="{{route('menu.index')}}" data-key="menu">Menu</a></li>
                         @endif --}}
@@ -371,12 +375,12 @@
                         </li>
                         @endif --}}
                         {{-- @if ($usr->can('countries.index')) --}}
-                        <li><a href="{{ route('countries.index') }}" data-key="countries">Nationality</a>
-                        </li>
+                        {{-- <li><a href="{{ route('countries.index') }}" data-key="countries">Nationality</a>
+                        </li> --}}
                         {{-- @endif --}}
-                    </ul>
+                    {{-- </ul>
                 </li>
-            @endif
+            @endif --}}
             </ul>
         </div>
         <!-- Sidebar -->

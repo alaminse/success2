@@ -99,7 +99,7 @@
                                             {{ $data->client->client_name }}
                                         </td>
                                         <td>
-                                            {{ $data->job_status == 1 ? 'Active' : 'Close' }}
+                                            <span class="btn btn-{{\App\Enums\JobStatus::from($data->job_status)->message()}} btn-sm">{{ \App\Enums\JobStatus::from($data->job_status)->title()}}</span>
                                         </td>
                                         <td>
                                             {{ $data?->job_type?->jobtype_code }}

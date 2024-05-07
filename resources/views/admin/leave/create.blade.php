@@ -27,12 +27,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-body p-5">
+                    <div class="card-body">
                         <form action="{{ route('leave.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <div class="col-lg-12 row">
-                                    <div class="row mb-1 col-lg-6">
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Group</label>
                                         <div class="col-sm-9">
                                             <select name="leave_empl_type" id="leave_empl_type" class="form-control">
@@ -42,20 +42,24 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Employee Name</label>
                                         <div class="col-sm-9">
                                             <select name="employees_id" id="employees_id" class="form-control">
                                                 <option value="">Select One</option>
                                                 {{-- @foreach ($employees as $employee)
-                                                    <option value="{{ $employee->id }}">
-                                                        {{ $employee->employee_name }}
-                                                    </option>
-                                                @endforeach --}}
+                                                        <option value="{{ $employee->id }}">
+                                                            {{ $employee->employee_name }}
+                                                        </option>
+                                                    @endforeach --}}
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Type of Leave</label>
                                         <div class="col-sm-9">
                                             <select name="leave_types_id" class="form-control">
@@ -67,7 +71,9 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Leave Duration</label>
                                         <div class="col-sm-9">
                                             <select name="leave_duration" class="form-control">
@@ -82,36 +88,45 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Date (From)</label>
                                         <div class="col-sm-9">
                                             <input id="dateFrom" type="date" name="leave_datefrom" class="form-control"
                                                 placeholder="Date (From)" value="{{ old('leave_datefrom') }}">
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Date (To)</label>
                                         <div class="col-sm-9">
                                             <input type="date" id="dateTo" class="form-control" name="leave_dateto"
                                                 placeholder="Date (To)" value="{{ old('leave_dateto') }}">
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Total Days</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" placeholder="Total Days"
                                                 name="leave_total_day" value="0">
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Upload File</label>
                                         <div class="col-sm-9">
                                             <input type="file" class="form-control" placeholder="Upload File"
                                                 name="leave_file_path">
-
                                         </div>
                                     </div>
-                                    <div class="row mb-1 col-lg-6">
+                                </div>
+                                <div class="mb-1 col-lg-6">
+                                    <div class="row">
                                         <label for="one" class="col-sm-3 col-form-label">Remarks</label>
                                         <div class="col-sm-9">
                                             <textarea rows="2" name="leave_reason" class="form-control" placeholder="Remarks"> {{ old('leave_reason') }} </textarea>
@@ -148,16 +163,16 @@
                 navigator.clipboard.writeText(copyText.value);
             }
 
-            $(document).ready(function(){
+            $(document).ready(function() {
                 let differenceInDays = 0;
+
                 function calculateDifference() {
                     let dateFrom = new Date($('#dateFrom').val());
                     dateFrom.setHours(0, 0, 0, 0);
 
                     let dateTo = new Date($('#dateTo').val());
                     dateTo.setHours(24, 0, 0, 0);
-                    if(!isNaN(dateFrom) && !isNaN(dateTo))
-                    {
+                    if (!isNaN(dateFrom) && !isNaN(dateTo)) {
                         let differenceInTime = dateTo.getTime() - dateFrom.getTime();
                         let differenceInDays = differenceInTime / (1000 * 3600 * 24);
                         console.log(differenceInDays);
@@ -169,7 +184,6 @@
                 $('#dateFrom, #dateTo').change(calculateDifference);
                 calculateDifference();
             });
-
         </script>
 
         <script>
@@ -248,13 +262,13 @@
 
             });
 
-            $(document).ready(function(){
-            $(document).on('change', '#dateFrom', function(){
-                var value2=$('#dateFrom').val();
-                $('#dateTo').attr('min', value2);
-                $('#dateTo').prop("disabled", false);
-                $('.end').prop("disabled", false);
-            });
+            $(document).ready(function() {
+                $(document).on('change', '#dateFrom', function() {
+                    var value2 = $('#dateFrom').val();
+                    $('#dateTo').attr('min', value2);
+                    $('#dateTo').prop("disabled", false);
+                    $('.end').prop("disabled", false);
+                });
             });
         </script>
     @endsection

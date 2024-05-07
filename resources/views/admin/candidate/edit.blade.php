@@ -187,10 +187,8 @@
                                                         required>
                                                 </div>
                                             </div>
-
                                             <div class="row col-md-6 col-lg-6 mb-1">
-                                                <label for="passtypes_id" class="col-sm-5 col-form-label fw-bold">Type Of
-                                                    Pass</label>
+                                                <label for="passtypes_id" class="col-sm-5 col-form-label fw-bold">Type Of Pass</label>
                                                 <div class="col-sm-7">
                                                     <select id="passtypes_id" name="passtypes_id"
                                                         class="form-control single-select-field">
@@ -330,7 +328,7 @@
                                                         class="form-control" value="{{ $candidate->candidate_email }}">
                                                 </div>
                                             </div>
-                                            <div class="row col-md-6 col-lg-6 mb-1">
+                                            {{-- <div class="row col-md-6 col-lg-6 mb-1">
                                                 <label for="candidate_outlet_id"
                                                     class="col-sm-5 col-form-label fw-bold">Outlet<span
                                                         class="text-danger">*</span></label>
@@ -344,7 +342,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="row col-md-6 col-lg-6 mb-1">
                                                 <label for="candidate_isBlocked"
                                                     class="col-sm-5 col-form-label fw-bold">Black List</label>
@@ -1555,10 +1553,10 @@
                                                     <label for="one"
                                                     class="col-sm-3 col-form-label fw-bold">Notice</label>
                                                     <div class="col-sm-9">
-                                                        <select name="isNotice" class="form-control single-select-field" required>
-                                                            <option value="" disabled>Select One</option>
-                                                            <option value="1" {{ old('isNotice') == 1 ? 'selected' : '' }}>Yes</option>
-                                                            <option value="0" {{ old('isNotice') == 0 ? 'selected' : '' }}>No</option>
+                                                        <select name="isNotice" class="form-control single-select-field">
+                                                            <option value="" selected>Select One</option>
+                                                            <option value="1">Yes</option>
+                                                            <option value="0">No</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -2391,8 +2389,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <form action="{{ route('candidate.file.upload', $candidate->id) }}" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form action="{{ route('candidate.file.upload', $candidate->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="file_type_for" value="1"
                                             class="form-control">
@@ -2436,8 +2433,7 @@
                                 </div>
                                 <div class="modal-body">
 
-                                    <form action="{{ route('candidate.resume', $candidate->id) }}" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form action="{{ route('candidate.resume', $candidate->id) }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="candidate_id" value="{{ $candidate->id }}"
                                             class="form-control">
@@ -2446,16 +2442,13 @@
                                                 <label for="resume_name" class="col-sm-3 col-form-label">Resume
                                                     Name</label>
                                                 <div class="col-sm-9">
-                                                    <input type="text" name="resume_name" class="form-control"
-                                                        value="{{ old('resume_name') }}">
+                                                    <input type="text" id="resume_name" name="resume_name" class="form-control" value="{{ old('resume_name') }}">
                                                 </div>
                                             </div>
                                             <div class="row mb-1">
-                                                <label for="resume_file_path" class="col-sm-3 col-form-label">Upload
-                                                    File</label>
+                                                <label for="resume_file_path" class="col-sm-3 col-form-label">Upload File</label>
                                                 <div class="col-sm-9">
-                                                    <input type="file" name="resume_file_path"
-                                                        class="form-control">
+                                                    <input type="file" name="resume_file_path" class="form-control">
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-sm btn-info w-md">Submit</button>
@@ -2758,6 +2751,19 @@
                     });
                 });
             });
+
+            window.onload = function() {
+                generateResumeName();
+            };
+
+            function generateResumeName() {
+                var resumeNameInput = document.getElementById("resume_name");
+                if (!resumeNameInput.value) { // Check if the input field is empty
+                    var timestamp = Date.now(); // Get the current timestamp
+                    resumeNameInput.value = "resume_" + timestamp;
+                }
+            }
+
         </script>
 
         @include('admin.candidate.inc.teamjs');

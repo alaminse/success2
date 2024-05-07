@@ -171,6 +171,7 @@
                                                     <input type="text" name="employee_phone" class="form-control" value="{{ old('employee_phone', $employee->employee_phone) }}">
                                                 </div>
                                             </div>
+
                                             <input type="hidden" name="employee_outlet_id" value="0">
                                             {{-- <div class="row col-md-6 col-lg-6 mb-1">
                                                 <label for="one" class="col-sm-5 col-form-label fw-bold">Outlet <span class="text-danger">*</span> </label>

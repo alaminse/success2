@@ -1323,8 +1323,8 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="remark" role="tabpanel">
-                            <form action="{{ route('candidate.remark.update', $remark->id) }}" method="POST">
-                                @csrf
+                            {{-- <form action="{{ route('candidate.remark.update', $remark->id) }}" method="POST">
+                                @csrf --}}
                                 <div class="row">
                                     <h5>Update Remarks</h5>
                                     <p class="mb-0"><strong>Name:</strong> {{ $candidate->candidate_name }}</p>
@@ -1332,8 +1332,7 @@
                                     <div class="col-md-6 col-lg-6 mb-1">
                                         <div class="row">
                                             <input type="hidden" value="{{ $candidate->id }}" name="candidate_id">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Remark
-                                                Type</label>
+                                            <label for="one" class="col-sm-3 col-form-label fw-bold">Remark Type</label>
                                             <div class="col-sm-9">
                                                 <select name="remarkstype_id" class="form-control single-select-field"
                                                     disabled id="remark_type">
@@ -1551,8 +1550,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistProbationPeriod"
-                                        style="display: none;">
+                                    <div class="col-md-6 col-lg-6 mb-1" id="shortlistProbationPeriod" style="display: none;">
                                         <div class="row">
                                             <label for="one" class="col-sm-3 col-form-label fw-bold">Probation
                                                 Period</label>
@@ -1701,8 +1699,7 @@
                                     </div>
                                     <div class="col-md-6 col-lg-6 mb-1" id="shortlistArNo" style="display: none;">
                                         <div class="row">
-                                            <label for="one" class="col-sm-3 col-form-label fw-bold">AR
-                                                No</label>
+                                            <label for="one" class="col-sm-3 col-form-label fw-bold">AR No</label>
                                             <div class="col-sm-9">
                                                 <select name="shortlistArNo"
                                                     class="form-control single-select-field">
@@ -1902,11 +1899,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 mb-1">
+                                    {{-- <div class="col-12 mb-1">
                                         <button type="submit" class="btn btn-success btn-sm">Update</button>
-                                    </div>
+                                    </div> --}}
                                 </div>
-                            </form>
+                            {{-- </form> --}}
                             <div class="row">
                                 <div class="col-lg-12 mt-2">
                                     <table class="table table-bordered mb-0">

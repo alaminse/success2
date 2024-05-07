@@ -87,14 +87,6 @@
                                     <div class="row mb-4">
                                         <div class="row col-lg-6 mb-1">
                                             <label for="one" class="col-sm-5 col-form-label fw-bold">Client
-                                                Code <span class="text-danger">*</span></label>
-                                            <div class="col-sm-7">
-                                                <input type="text" name="client_code" class="form-control"
-                                                    placeholder="Client Code" value="{{ $client->client_code }}" required>
-                                            </div>
-                                        </div>
-                                        <div class="row col-lg-6 mb-1">
-                                            <label for="one" class="col-sm-5 col-form-label fw-bold">Client
                                                 Name <span class="text-danger">*</span> </label>
                                             <div class="col-sm-7">
                                                 <input type="text" name="client_name" class="form-control" value="{{ old('client_name', $client->client_name) }}" required>
@@ -211,13 +203,27 @@
                                                     value="{{ $client->client_contact_person }}" required>
                                             </div>
                                         </div>
+                                        @php
+                                            $client_contact_number = $client->client_contact_number;
+                                            $country_code = substr($client_contact_number, 0, 3);
+                                            $phone_number = substr($client_contact_number, 4);
+                                        @endphp
                                         <div class="row col-lg-6 mb-1">
-                                            <label for="thirteen" class="col-sm-5 col-form-label fw-bold">Contact
-                                                Number <span class="text-danger">*</span></label>
+                                            <label for="thirteen" class="col-sm-5 col-form-label fw-bold">Contact @php
+                                            $client_contact_number = $client->client_contact_number;
+                                            $country_code = substr($client_contact_number, 0, 3);
+                                            $phone_number = substr($client_contact_number, 4);
+                                        @endphp <span class="text-danger">*</span></label>
                                             <div class="col-sm-7">
-                                                <input type="text" name="client_contact_number" class="form-control"
-                                                    placeholder="Contact Number"
-                                                    value="{{ $client->client_contact_number }}" required>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <select class="form-control" id="country_code" name="country_code">
+                                                            <option value="+65" {{$country_code == '+65' ? 'selected' : ''}}>+65</option>
+                                                            <option value="+60"  {{$country_code == '+60' ? 'selected' : ''}}>+60</option>
+                                                        </select>
+                                                    </div>
+                                                    <input type="text" name="client_contact_number" class="form-control" placeholder="Contact Number" value="{{ old('client_contact_number', $phone_number) }}" required maxlength="10">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row col-lg-6  mb-1">
@@ -243,19 +249,23 @@
                                                     class="form-control" value="{{ $client->client_attention_designation }}">
                                             </div>
                                         </div>
+                                        @php
+                                            $client_phone = $client->client_phone;
+                                            $client_country_code = substr($client_phone, 0, 3);
+                                            $client_phone_n = substr($client_phone, 4);
+                                        @endphp
                                         <div class="row col-lg-6  mb-1">
-                                            <label for="eighteen"
-                                                class="col-sm-5 col-form-label fw-bold">Designation</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" name="client_designation" class="form-control" value="{{ $client->client_designation }}">
-                                            </div>
-                                        </div>
-                                        <div class="row col-lg-6  mb-1">
-                                            <label for="nineteen" class="col-sm-5 col-form-label fw-bold">Phone
-                                                Number</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" name="client_phone" class="form-control"
-                                                    placeholder="Phone Number" value="{{ $client->client_phone }}">
+                                            <label for="nineteen" class="col-sm-5 col-form-label fw-bold">Phone Number</label>
+                                                <div class="col-sm-7">
+                                                    <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <select class="form-control" id="client_country_code" name="client_country_code">
+                                                            <option value="+65" {{$client_country_code == '+65' ? 'selected' : ''}}>+65</option>
+                                                            <option value="+60" {{$client_country_code == '+60' ? 'selected' : ''}}>+60</option>
+                                                        </select>
+                                                    </div>
+                                                    <input type="text" name="client_phone" class="form-control" placeholder="Phone Number" value="{{ old('client_phone', $client_phone_n) }}" axlength="10">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row col-lg-6  mb-1">

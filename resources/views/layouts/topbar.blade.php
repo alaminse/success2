@@ -1,4 +1,7 @@
 <header id="page-topbar" class="isvertical-topbar">
+    @php
+        $notifications = Auth::user()->notifications;
+    @endphp
     <div class="navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
@@ -31,12 +34,22 @@
                 <h4 class="page-title mb-0">@yield('page-title')</h4>
             </div>
             <!-- end page title -->
-
         </div>
-
+        @php
+            $emp = Auth::user()->employe
+        @endphp
         <div class="d-flex">
-
- @if(Auth::guard('web')->user())
+            <div class="dropdown d-inline-block">
+                <a class="btn btn-warning dropdown-toggle mt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 50% !important">
+                    <i class="fa fa-bell icon nav-icon" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach ($emp->notifications as $notification)
+                        <li><a class="dropdown-item" href="#">{{ $notification->data['title'] }}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+            @if(Auth::guard('web')->user())
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn  header-item user text-start d-flex align-items-center"
                     id="page-header-user-dropdown-v" data-bs-toggle="dropdown" aria-haspopup="true"
@@ -75,8 +88,8 @@
                 </div>
             </div>
             @else
-                   <script>window.location = "/ATS/Employee";</script>
-                    @endif
+                <script>window.location = "/ATS/Employee";</script>
+            @endif
         </div>
     </div>
 </header>

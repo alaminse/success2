@@ -1126,7 +1126,7 @@
                                             <button class="accordion-button fw-medium collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#threedaynoaction-collapse"
                                                 aria-expanded="false" aria-controls="threedaynoaction-collapse ">
-                                                Three Day No Action
+                                                Three Days No Action
                                             </button>
                                         </h2>
 

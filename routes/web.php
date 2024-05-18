@@ -38,7 +38,11 @@ use App\Http\Controllers\TncController;
 use App\Http\Controllers\UploadFileTypeController;
 use App\Http\Controllers\UserController;
 use App\Models\ClientUploadFile;
+use App\Models\Employee;
+use App\Models\User;
+use App\Notifications\DateUpdatedNotification;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Spatie\Activitylog\Models\Activity;
 /*
@@ -71,6 +75,23 @@ Route::get('/', function () {
 
     return redirect(route('login'));
 })->middleware('AdminMiddleware');
+
+Route::get('/not', function () {
+    $user = Employee::find(120);
+    $notificationData = [
+        'type' => 'App\Notifications\DateUpdatedNotification',
+        'data' => json_encode(['message' => 'The notification date has been updated successfully.']),
+        'read_at' => null,
+        'notifiable_id' => 120,
+        'notifiable_type' => 'App\Models\Employee',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ];
+
+    DB::table('notifications')->insert($notificationData);
+
+    return 'Notification inserted successfully!';
+});
 
 
 Auth::routes(['register' => false, 'login' => false]);

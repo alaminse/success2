@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('notifiable_id')->nullable();
+            $table->unsignedBigInteger('candidate_id')->nullable();
             $table->string('type')->nullable();
             $table->string('notifiable_type')->nullable();
             $table->string('title');
             $table->integer('day')->default(1);
             $table->text('data');
+            $table->time('time');
             $table->date('date');
             $table->date('new_date');
             $table->tinyInteger('read_at')->nullable();

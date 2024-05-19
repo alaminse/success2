@@ -1397,6 +1397,22 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6 col-lg-6 mb-1" id="callbackDate" style="display: none;">
+                                                <div class="row">
+                                                    <label for="one" class="col-sm-3 col-form-label fw-bold">Callback Date</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="date" class="form-control" name="callbackDate" value="{{old('callbackDate')}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6 mb-1" id="callbackTime" style="display: none;">
+                                                <div class="row">
+                                                    <label for="one" class="col-sm-3 col-form-label fw-bold">Callback Time</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="time" class="form-control" name="callbackTime" value="{{old('callbackTime')}}">
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-md-6 col-lg-6 mb-1" id="interviewCompany" style="display: none;">
                                                 <div class="row">
                                                     <label for="one" class="col-sm-3 col-form-label fw-bold">Interview Company <span class="text-danger">*</span></label>
@@ -2549,6 +2565,18 @@
                         });
                     } else {
                         $('#AssignToRC').hide().css('display', 'none');
+                    }
+
+                    if (selectedValue === '22') {
+                        $('#callbackDate').show().css('display', 'show');
+                        $('#callbackDate').prop('required', true);
+                        $('#callbackTime').show().css('display', 'show');
+                        $('#callbackTime').prop('required', true);
+                    } else {
+                        $('#callbackDate').show().hide().css('display', 'none');
+                        $('#callbackDate').prop('required', false);
+                        $('#callbackTime').show().hide().css('display', 'none');
+                        $('#callbackTime').prop('required', false);
                     }
 
                     if (selectedValue === '5') {

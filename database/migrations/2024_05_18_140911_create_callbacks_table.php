@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('callbacks', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('candidate_id')->nullable();
             $table->integer('manager_id')->nullable();
             $table->integer('teamleader_id')->nullable();
             $table->integer('consultant_id')->nullable();

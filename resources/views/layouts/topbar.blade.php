@@ -40,14 +40,16 @@
         @endphp
         <div class="d-flex">
             <div class="dropdown d-inline-block">
-                <a class="btn btn-warning dropdown-toggle mt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="border-radius: 50% !important">
-                    <i class="fa fa-bell icon nav-icon" aria-hidden="true"></i>
+                <a class="btn btn-warning dropdown-toggle mt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 5px 6px; border-radius: 55% 55% !important;">
+                    <i class="fa fa-bell icon nav-icon" aria-hidden="true"></i>{{count($emp->notifications)}}
                 </a>
+                @if (count($emp->notifications) > 0)
                 <ul class="dropdown-menu">
                     @foreach ($emp->notifications as $notification)
-                        <li><a class="dropdown-item" href="#">{{ $notification->data['title'] }}</a></li>
+                        <li><a class="dropdown-item" href="#"> <strong>{{ $notification->new_date }}: </strong> {{ $notification->title }}</a></li>
                     @endforeach
                 </ul>
+                @endif
             </div>
             @if(Auth::guard('web')->user())
             <div class="dropdown d-inline-block">

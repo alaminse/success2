@@ -14,17 +14,15 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('notifiable_id')->nullable();
+            $table->string('type')->nullable();
             $table->string('notifiable_type')->nullable();
-            $table->integer('manager_id')->nullable();
-            $table->integer('teamleader_id')->nullable();
-            $table->integer('consultant_id')->nullable();
-            $table->integer('candidate_remark_id')->nullable();
-            $table->integer('candidate_remark_shortlist_id')->nullable();
             $table->string('title');
             $table->integer('day')->default(1);
+            $table->text('data');
             $table->date('date');
             $table->date('new_date');
-            $table->tinyInteger('status')->nullable();
+            $table->tinyInteger('read_at')->nullable();
+            $table->tinyInteger('status')->default(5);
             $table->timestamps();
         });
     }

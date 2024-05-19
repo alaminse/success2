@@ -865,7 +865,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($assignToClients ?? [] as $candidate)
+                                                    @foreach ($assignToClient[1] ?? [] as $candidate)
                                                         <tr style="cursor: pointer" class="accordion-row"
                                                             id="{{ $candidate['candidate_id'] }}"
                                                             data-candidate-name="{{ $candidate->candidate['candidate_name'] }}">
@@ -929,7 +929,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($twobusinessdayclients ?? [] as $candidate)
+                                                    @foreach ($assignToClient[2] ?? [] as $candidate)
                                                         <tr style="cursor: pointer" class="accordion-row"
                                                             id="{{ $candidate['candidate_id'] }}"
                                                             data-candidate-name="{{ $candidate->candidate['candidate_name'] }}">

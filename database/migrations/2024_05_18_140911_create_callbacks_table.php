@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('day')->default(1);
             $table->date('date');
             $table->date('new_date');
+            $table->time('time');
             $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });

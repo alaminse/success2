@@ -472,79 +472,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="accordion accordion-Interview" id="Interview">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="Interview-heading">
-                                            <button class="accordion-button fw-medium collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#Interview-collapse"
-                                                aria-expanded="false" aria-controls="Interview-collapse">
-                                                Interviews
-                                            </button>
-                                        </h2>
 
-                                        <div id="Interview-collapse" class="accordion-collapse collapse p-2"
-                                            aria-labelledby="Interview-heading" data-bs-parent="#Interview"
-                                            style="">
-                                            <h5 class="bg-success px-4 py-1 text-white">Candidates Detail</h5>
-                                            <table class="table table-bordered mb-0 dataTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Candidate Name</th>
-                                                        <th>Mobile</th>
-                                                        <th>Email</th>
-                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 12)
-                                                        @else
-                                                            <th>Manager</th>
-                                                        @endif
-                                                        <th>Consultant / Leader</th>
-                                                        <th>Action</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($interviews ?? [] as $candidate)
-                                                        <tr style="cursor: pointer" class="accordion-row"
-                                                            id="{{ $candidate['candidate_id'] }}"
-                                                            data-candidate-name="{{ $candidate->candidate['candidate_name'] }}">
-                                                            <td>{{ $loop->index + 1 }}</td>
-                                                            <td>{{ $candidate->candidate['candidate_name'] }}</td>
-                                                            <td>{{ $candidate->candidate['candidate_home_phone'] }}
-                                                            </td>
-                                                            <td>{{ $candidate->candidate['candidate_email'] }}</td>
-                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
-                                                            @else
-                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
-                                                                </td>
-                                                            @endif
-                                                            </td>
-                                                            <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
-                                                            </td>
-                                                            <td class="d-flex flex-row">
-                                                                 @if ($auth->roles_id == 4 || $auth->roles_id == 11)
-                                                                    @include('admin.dashboard.inc.select')
-                                                                @endif
-                                                                <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
-                                                                @if($candidate->candidate->getMainResumeFilePath() != null)
-                                                                <button  title="Show Resume" type="button"
-                                                                    class="btn btn-info btn-sm me-2 resumePath btn-sm"
-                                                                    data-bs-toggle="modal" data-bs-target="#showResume"
-                                                                    data-file-path="{{ $candidate->candidate->getMainResumeFilePath() }}">D</button>
-                                                                @endif
-                                                                <a onclick="changeRemarkBlock({{ $candidate['id'] }})" class="btn btn-danger btn-sm me-2 resumePath btn-sm">X</a>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-body">
@@ -1110,6 +1038,79 @@
                                                     </tbody>
                                                 </table>
                                             @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="accordion accordion-Interview" id="Interview">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="Interview-heading">
+                                            <button class="accordion-button fw-medium collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#Interview-collapse"
+                                                aria-expanded="false" aria-controls="Interview-collapse">
+                                                Interviews
+                                            </button>
+                                        </h2>
+
+                                        <div id="Interview-collapse" class="accordion-collapse collapse p-2"
+                                            aria-labelledby="Interview-heading" data-bs-parent="#Interview"
+                                            style="">
+                                            <h5 class="bg-success px-4 py-1 text-white">Candidates Detail</h5>
+                                            <table class="table table-bordered mb-0 dataTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Candidate Name</th>
+                                                        <th>Mobile</th>
+                                                        <th>Email</th>
+                                                        @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                        @else
+                                                            <th>Manager</th>
+                                                        @endif
+                                                        <th>Consultant / Leader</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($interviewData ?? [] as $candidate)
+                                                        <tr style="cursor: pointer" class="accordion-row"
+                                                            id="{{ $candidate['candidate_id'] }}"
+                                                            data-candidate-name="{{ $candidate->candidate['candidate_name'] }}">
+                                                            <td>{{ $loop->index + 1 }}</td>
+                                                            <td>{{ $candidate->candidate['candidate_name'] }}</td>
+                                                            <td>{{ $candidate->candidate['candidate_home_phone'] }}
+                                                            </td>
+                                                            <td>{{ $candidate->candidate['candidate_email'] }}</td>
+                                                            @if ($auth->roles_id == 8 || $auth->roles_id == 12)
+                                                            @else
+                                                                <td>{{ $candidate->candidate['manager']['employee_name'] ?? '' }}
+                                                                </td>
+                                                            @endif
+                                                            </td>
+                                                            <td>{{ $candidate->candidate?->consultant?->employee_code ?? $candidate->candidate?->team_leader?->employee_code }}
+                                                            </td>
+                                                            <td class="d-flex flex-row">
+                                                                 @if ($auth->roles_id == 4 || $auth->roles_id == 11)
+                                                                    @include('admin.dashboard.inc.select')
+                                                                @endif
+                                                                <a title="Add Remarks" class="btn btn-warning btn-sm me-2 resumePath" href="{{ URL::to('/ATS/candidate/'.$candidate->candidate_id.'/edit#remark') }}"><i class="fas fa-plus"></i> R</a>
+                                                                @if($candidate->candidate->getMainResumeFilePath() != null)
+                                                                <button  title="Show Resume" type="button"
+                                                                    class="btn btn-info btn-sm me-2 resumePath btn-sm"
+                                                                    data-bs-toggle="modal" data-bs-target="#showResume"
+                                                                    data-file-path="{{ $candidate->candidate->getMainResumeFilePath() }}">D</button>
+                                                                @endif
+                                                                <a onclick="changeRemarkBlock({{ $candidate['id'] }})" class="btn btn-danger btn-sm me-2 resumePath btn-sm">X</a>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>

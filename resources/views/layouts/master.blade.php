@@ -47,10 +47,40 @@
 
 @include('layouts.vendor-scripts')
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <script>
     document.addEventListener('contextmenu', function(event) {
         event.preventDefault();
+    });
+
+    $(document).ready(function() {
+        $('.notification-item').click(function(event) {
+            event.preventDefault();
+            let $notificationItem = $(this);
+            let notificationId = $notificationItem.data('notification-id');
+
+            $.ajax({
+                url: '/notifications/' + notificationId + '/mark-as-read',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    console.log(response);
+                    if (response.status == true) {
+                        $notificationItem.removeClass('text-reset').addClass('text-muted');
+                        $notificationItem.find('.avatar-title i').removeClass('fa-phone').addClass('fa-phone-slash');
+                    } else {
+                        console.error('Failed to mark notification as read:', response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
     });
 
     // document.addEventListener('keydown', function(event) {

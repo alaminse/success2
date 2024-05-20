@@ -2508,8 +2508,6 @@
             $(document).ready(function() {
                 $('body').on('change','#remark_type_test',function () {
                     var selectedValue = $(this).val();
-
-                    console.log(selectedValue);
                     if (selectedValue === '9') {
                         $('#reassign').show();
                     } else {

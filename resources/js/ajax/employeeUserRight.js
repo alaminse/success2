@@ -3,9 +3,6 @@ const { log } = require("handsontable/helpers");
 $(document).ready(function() {
     $('#mySelect').change(function() {
         var selectedValue = $(this).val();
-
-        console.log(selectedValue);
-
         // if (selectedValue === '4') {
         //     myPayroll();
         // } else {

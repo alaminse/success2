@@ -28,6 +28,7 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\MaritalStatusController;
 use App\Http\Controllers\NationalityController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PassTypeController;
 use App\Http\Controllers\ReligionController;
@@ -61,9 +62,6 @@ use Spatie\Activitylog\Models\Activity;
 //     return view('admin.dashboard.index');
 // })->name('dashboard');
 // Dashbaord ends
-
-
-
 
 Route::get('/ats', function () {
 
@@ -250,3 +248,4 @@ Route::prefix('ATS')->group(function () {
 Route::get('/job/lists',  [FrontendJobController::class, 'index'])->name('job.lists');
 Route::get('/job/list/{job}',  [FrontendJobController::class, 'job_details'])->name('job.details');
 Route::post('/job/apply',  [FrontendJobController::class, 'apply'])->name('job.apply');
+Route::post('/notifications/{notification}/mark-as-read', [NotificationController::class, 'mark_as_read'])->name('notifications.markAsRead');

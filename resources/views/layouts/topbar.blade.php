@@ -35,11 +35,16 @@
             </div>
             <!-- end page title -->
         </div>
-        <div class="dropdown d-inline-block">
+
+        @php
+            $emp = Auth::user()->employe
+        @endphp
+        <div class="d-flex">
+            <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item noti-icon" id="page-header-notifications-dropdown-v"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="bx bx-bell icon-sm align-middle"></i>
-                    <span class="noti-dot bg-danger rounded-pill">4</span>
+                    <span class="noti-dot bg-danger rounded-pill">{{count($emp->notifications)}}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end p-0"
                     aria-labelledby="page-header-notifications-dropdown-v">
@@ -48,100 +53,57 @@
                             <div class="col">
                                 <h5 class="m-0 font-size-15"> Notifications </h5>
                             </div>
-                            <div class="col-auto">
+                            {{-- <div class="col-auto">
                                 <a href="#!" class="small fw-semibold text-decoration-underline"> Mark all as
                                     read</a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div data-simplebar style="max-height: 250px;">
-                        <a href="#!" class="text-reset notification-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 me-3">
-                                    <img src="{{ URL::asset('build/images/users/avatar-3.jpg') }}"
-                                        class="rounded-circle avatar-sm" alt="user-pic">
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="text-muted font-size-13 mb-0 float-end">1 hour ago</p>
-                                    <h6 class="mb-1">James Lemire</h6>
-                                    <div>
-                                        <p class="mb-0">It will seem like simplified English.</p>
+                        @if (count($emp->notifications) > 0)
+                            @foreach ($emp->notifications as $notification)
+                                @php
+                                    $data = $notification->data;
+                                    $time = null;
+                                    if (isset($data['time'])) {
+                                        try {
+                                            $carbonTime = Carbon\Carbon::parse($data['time']);
+                                            $time = $carbonTime->format('h:i A');
+                                        } catch (\Exception $e) {
+                                            $time = null;
+                                        }
+                                    }
+                                    $parsedDate = null;
+                                    if (isset($data['new_date'])) {
+                                        try {
+                                            $carbonDate = Carbon\Carbon::parse($data['new_date']);
+                                            $parsedDate = $carbonDate->format('F j, Y');
+                                        } catch (\Exception $e) {
+                                            $parsedDate = null;
+                                        }
+                                    }
+                                    $candidate = App\Models\Candidate::select('candidate_name', 'candidate_mobile')->find($data['candidate_id']);
+                                @endphp
+                                <a href="#!" class="text-reset notification-item" data-notification-id="{{ $notification->id }}">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 avatar-sm me-3">
+                                            <span class="avatar-title bg-success rounded-circle font-size-18">
+                                                <i class="fas {{ $notification['read_at'] == null ? 'fa-phone' : 'fa-phone-slash' }}"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <p class="text-muted font-size-13 mb-0 float-end">{{ $data['title'] }}</p>
+                                            <h6 class="mb-1">{{$candidate->candidate_name}} ({{$candidate->candidate_mobile}})</h6>
+                                            <div>
+                                                <p class="mb-0">{{$parsedDate}} <strong>{{$time}}</strong></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-
-                            </div>
-                        </a>
-                        <a href="#!" class="text-reset notification-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 avatar-sm me-3">
-                                    <span class="avatar-title bg-primary rounded-circle font-size-18">
-                                        <i class="bx bx-cart"></i>
-                                    </span>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="text-muted font-size-13 mb-0 float-end">3 min ago</p>
-                                    <h6 class="mb-1">Your order is placed</h6>
-                                    <div>
-                                        <p class="mb-0">If several languages coalesce the grammar</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="#!" class="text-reset notification-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 avatar-sm me-3">
-                                    <span class="avatar-title bg-success rounded-circle font-size-18">
-                                        <i class="bx bx-badge-check"></i>
-                                    </span>
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="text-muted font-size-13 mb-0 float-end">Callback</p>
-                                    <h6 class="mb-1">candidate name (+65 mobile no)</h6>
-                                    <div>
-                                        <p class="mb-0">Date and time</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a href="#!" class="text-reset notification-item">
-                            <div class="d-flex">
-                                <div class="flex-shrink-0 me-3">
-                                    <img src="{{ URL::asset('build/images/users/avatar-6.jpg') }}"
-                                        class="rounded-circle avatar-sm" alt="user-pic">
-                                </div>
-                                <div class="flex-grow-1">
-                                    <p class="text-muted font-size-13 mb-0 float-end">1 hour ago</p>
-                                    <h6 class="mb-1">Salena Layfield</h6>
-                                    <div>
-                                        <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="p-2 border-top d-grid">
-                        <a class="btn btn-sm btn-link font-size-14 btn-block text-center" href="javascript:void(0)">
-                            <i class="uil-arrow-circle-right me-1"></i> <span>View More..</span>
-                        </a>
+                                </a>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
-            </div>
-        @php
-            $emp = Auth::user()->employe
-        @endphp
-        <div class="d-flex">
-            <div class="dropdown d-inline-block">
-                <a class="btn btn-warning dropdown-toggle mt-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding: 5px 6px; border-radius: 55% 55% !important;">
-                    <i class="fa fa-bell icon nav-icon" aria-hidden="true"></i>{{count($emp->notifications)}}
-                </a>
-                @if (count($emp->notifications) > 0)
-                <ul class="dropdown-menu">
-                    @foreach ($emp->notifications as $notification)
-                        <li><a class="dropdown-item" href="#"> <strong>{{ $notification->new_date }}: </strong> {{ $notification->title }}</a></li>
-                    @endforeach
-                </ul>
-                @endif
             </div>
             @if(Auth::guard('web')->user())
             <div class="dropdown d-inline-block">

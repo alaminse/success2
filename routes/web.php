@@ -64,45 +64,23 @@ use Spatie\Activitylog\Models\Activity;
 // Dashbaord ends
 
 Route::get('/ats', function () {
-
     return redirect(route('login'));
-})->middleware('AdminMiddleware');
+})->middleware('auth');
 
 
 Route::get('/', function () {
 
     return redirect(route('login'));
-})->middleware('AdminMiddleware');
-
-Route::get('/not', function () {
-    $user = Employee::find(120);
-    $notificationData = [
-        'type' => 'App\Notifications\DateUpdatedNotification',
-        'data' => json_encode(['message' => 'The notification date has been updated successfully.']),
-        'read_at' => null,
-        'notifiable_id' => 120,
-        'notifiable_type' => 'App\Models\Employee',
-        'created_at' => now(),
-        'updated_at' => now(),
-    ];
-
-    DB::table('notifications')->insert($notificationData);
-
-    return 'Notification inserted successfully!';
-});
-
+})->middleware('auth');
 
 Auth::routes(['register' => false, 'login' => false]);
 Route::get('/login', [UserController::class, 'loginform'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 
+Route::any('/ATS/admin', function () {
+    return redirect('/ATS/designation');
+})->name('2fa')->middleware(['2fa', 'auth']);
 
-Route::middleware(['2fa', 'auth'])->group(function () {
-
-    Route::any('/ATS/admin', function () {
-        return redirect('/ATS/designation');
-    })->name('2fa');
-});
 
 Route::prefix('ATS')->group(function () {
     Route::get('/log', function () {
@@ -242,7 +220,7 @@ Route::prefix('ATS')->group(function () {
     Route::get('/get/attendence/{parent}', [AttendanceController::class, 'get_attendence'])->name('get.attendence');
     Route::get('/get/single/attendence/{attendance}', [AttendanceController::class, 'get_single_attendence'])->name('get.single.attendence');
     Route::post('/filter/job', [JobController::class, 'filter_job'])->name('filter.job');
-})->middleware(['AdminMiddleware', 'auth']);
+})->middleware('auth');
 
 
 Route::get('/job/lists',  [FrontendJobController::class, 'index'])->name('job.lists');

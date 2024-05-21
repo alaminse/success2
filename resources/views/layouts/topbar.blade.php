@@ -84,11 +84,11 @@
                                     }
                                     $candidate = App\Models\Candidate::select('candidate_name', 'candidate_mobile')->find($data['candidate_id']);
                                 @endphp
-                                <a href="#!" class="text-reset notification-item" data-notification-id="{{ $notification->id }}">
+                                <a href="#!" class="text-reset notification-item">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0 avatar-sm me-3">
                                             <span class="avatar-title bg-success rounded-circle font-size-18">
-                                                <i class="fas {{ $notification['read_at'] == null ? 'fa-phone' : 'fa-phone-slash' }}"></i>
+                                                <i class="fas fa-phone"></i>
                                             </span>
                                         </div>
                                         <div class="flex-grow-1">
